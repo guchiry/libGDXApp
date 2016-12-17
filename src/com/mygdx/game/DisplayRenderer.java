@@ -7,7 +7,6 @@ public class DisplayRenderer {
 
 	OrthographicCamera cam;
 
-	//change
 	public DisplayRenderer(World world,Score score, OrthographicCamera cam){
 		this.cam = cam;
 		gameRenderer = new GameRenderer(score, this.cam);
