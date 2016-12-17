@@ -15,7 +15,7 @@ public class GameScreen implements Screen{
 	private Score score;
 	private OrthographicCamera cam;
 	private Viewport viewport;
-	private WorldRenderer renderer;
+	private DisplayRenderer renderer;
 
 	@Override
 	public void show() {
@@ -26,7 +26,7 @@ public class GameScreen implements Screen{
 		world = new World();
 		score = new Score();
 
-		renderer = new WorldRenderer(world, score, cam);
+		renderer = new DisplayRenderer(world, score, cam);
 	}
 
 	@Override
