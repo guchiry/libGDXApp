@@ -3,7 +3,6 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public class Note {
@@ -14,8 +13,7 @@ public class Note {
 	public Note(Vector2 position){
 		this.position = position;
 		this.speed = Setting.NOTES_SPEED;
-		Texture texture = new Texture(Gdx.files.internal("res/" + "kaede2.png"));
-		sprite = new Sprite(new TextureRegion(texture,16,0,16,16));
+		sprite = new Sprite(new Texture(Gdx.files.internal("res/" + "Goblin.png")));
 		sprite.setScale(3f);
 	}
 
