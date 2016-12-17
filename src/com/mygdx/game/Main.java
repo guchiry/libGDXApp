@@ -12,5 +12,5 @@ public class Main {
             600
         );
 	}
-//g
+//sos
 }
