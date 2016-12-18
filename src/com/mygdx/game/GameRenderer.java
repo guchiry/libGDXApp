@@ -46,8 +46,8 @@ public class GameRenderer {
 
 		// ScoreUIの描画
 		renderer.setProjectionMatrix(cam.combined);
-		ScoreUI scoreui = score.getScoreUI();
-		renderer = scoreui.getShapeRenderer();
+		PlayUI playUi = score.getPlayUI();
+		renderer = playUi.getShapeRenderer();
 
 		//　ノーツ(ライン)の描画
 		renderer.setProjectionMatrix(cam.combined);

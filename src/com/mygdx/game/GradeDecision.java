@@ -36,7 +36,7 @@ public class GradeDecision {
 	public float getDistance(){
 		float distance = Setting.MAX_DISTANCE;
 		if(!score.getNoteDisp().isEmpty()){
-			distance = score.getScoreUI().getCenterX() - score.getNoteDisp().getLatestNote().getPosition().x;
+			distance = score.getPlayUI().getCenterX() - score.getNoteDisp().getLatestNote().getPosition().x;
 			if(distance < 0) distance = -distance;
 
 		}

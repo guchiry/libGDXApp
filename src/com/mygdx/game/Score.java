@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
 public class Score {
-	private ScoreUI scoreui;
+	private PlayUI playUi;
 	private GradeDecision decision;
 	private NoteDisplay noteDisp;
 	private Controller controller;
@@ -15,7 +15,7 @@ public class Score {
 	private float touchTime = 0;
 
 	public Score(){
-		scoreui = new ScoreUI(0, 320, 800, 160);
+		playUi = new PlayUI(0, 320);
 		noteDisp = new NoteDisplay();
 		decision = new GradeDecision(this);
 		controller = new Controller(this);
@@ -36,13 +36,13 @@ public class Score {
 			if(noteDisp.getLatestNote().getPosition().x <= 0){
 				noteDisp.removeNote(0);
 				decision.increaseMissNum();
-				scoreui.getHpBar().decreaseHp();
+				playUi.getHpBar().decreaseHp();
 			}
 		}
 
 		controller.touched();
 
-		if(scoreui.getHpBar().getHp() <= 0){
+		if(playUi.getHpBar().getHp() <= 0){
 
 		}
 	}
@@ -60,8 +60,8 @@ public class Score {
 	}
 
 
-	public ScoreUI getScoreUI(){
-		return scoreui;
+	public PlayUI getPlayUI(){
+		return playUi;
 	}
 
 	public GradeDecision getDecision() {

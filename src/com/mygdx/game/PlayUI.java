@@ -4,33 +4,35 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-public class ScoreUI {
+public class PlayUI {
 	private ShapeRenderer renderer;
 	private SpriteBatch batch;
 	private HpBar hpBar;
 	private float x;
 	private float y;
-	private float width;
-	private float height;
 	private float centerX;
 	private float centerY;
 
 	private boolean debugMode = true;
 
-	public ScoreUI(float x, float y, float width, float height){
+	public PlayUI(float x, float y){
 		renderer = new ShapeRenderer();
 		batch = new SpriteBatch();
 		hpBar = new HpBar();
 		this.x = x;
 		this.y = y;
-		this.width = width;
-		this.height = height;
 		this.centerX = this.x + 80;
-		this.centerY = this.y + (this.height/2);
+		this.centerY = this.y + 80;
 	}
 
 	public void drawShapeRenderer(){
-		hpBar.draw(batch, renderer);
+		renderer.begin(ShapeType.Filled);
+		hpBar.drawBar(renderer);
+		renderer.end();
+
+		batch.begin();
+		hpBar.drawFrame(batch);
+		batch.end();
 
 		if(debugMode){
 			renderer.begin(ShapeType.Line);

@@ -20,7 +20,7 @@ public class Controller {
 			score.getDecision().evaluate();
 			if(score.getDecision().getGrade() == GradeDecision.Grade.MISS){
 				score.getDecision().increaseMissNum();
-				score.getScoreUI().getHpBar().decreaseHp();
+				score.getPlayUI().getHpBar().decreaseHp();
 				score.getNoteDisp().removeNote(0);
 			}else if(!(score.getDecision().getGrade() == null)){
 				score.getDecision().increaseSuccessNum();
@@ -30,7 +30,7 @@ public class Controller {
 		}
 
 		if(Gdx.input.isKeyJustPressed(Input.Keys.D)){
-			score.getScoreUI().setDebugMode();
+			score.getPlayUI().setDebugMode();
 		}
 	}
 }
