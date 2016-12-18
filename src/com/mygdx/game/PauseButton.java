@@ -1,18 +1,19 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class PauseButton {
+	private Sprite sprite;
 
-	public void draw(ShapeRenderer renderer){
-		renderer.begin(ShapeType.Filled);
-		renderer.setColor(0.5f,0.5f,0.5f,1);
-		renderer.rect(770, 450, 30, 30);
-		renderer.end();
-		renderer.begin(ShapeType.Line);
-		renderer.setColor(1f, 1f, 1f, 1);
-		renderer.rect(770, 449, 30, 30);
-		renderer.end();
+	public PauseButton(){
+		sprite = new Sprite(new Texture(Gdx.files.internal("res/PauseButton.png")));
+		sprite.setPosition(762, 442);
+	}
+
+	public void draw(SpriteBatch batch){
+		sprite.draw(batch);
 	}
 }

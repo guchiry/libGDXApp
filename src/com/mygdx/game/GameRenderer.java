@@ -3,9 +3,11 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -17,6 +19,9 @@ public class GameRenderer {
 	BitmapFont font;
 	ShapeRenderer renderer = new ShapeRenderer();
 	Sprite img;
+	Animation anim;
+	private PauseButton pauseButton;
+	float time = 0;
 
 	public GameRenderer(Score score, OrthographicCamera cam){
 		this.score = score;
@@ -24,8 +29,11 @@ public class GameRenderer {
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		font.setColor(1, 0, 0, 1);
-		font.getData().setScale(1.5f);
+		font.getData().setScale(1.3f);
 		img = new Sprite(new Texture(Gdx.files.internal("res/scoreUI.png")));
+		TextureRegion[] split = new TextureRegion(new Texture(Gdx.files.internal("res/kaede2.png"))).split(16, 16)[0];
+		anim = new Animation(0.5f, split[1],split[0],split[1],split[2]);
+		pauseButton = new PauseButton();
 	}
 
 	private void update(float delta){
@@ -34,6 +42,7 @@ public class GameRenderer {
 
 	private void draw(float delta){
 		this.cam.update();
+		time += delta;
 
 		// ScoreUIの描画
 		renderer.setProjectionMatrix(cam.combined);
@@ -53,6 +62,7 @@ public class GameRenderer {
 
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
+
 		// scoreUIの描画
 		img.setPosition(254, 380);
 		img.setScale(3f);
@@ -67,6 +77,10 @@ public class GameRenderer {
 		//文字描画
 		font.draw(batch, "Success:" + score.getDecision().getSuccessNum() + " Miss:" + score.getDecision().getMissNum(), 10, 40);
 		if(score.getTouchTime() < Setting.DICISION_FADE_TIME) font.draw(batch, score.getDicisionStr(), 20, 440);
+
+		batch.draw(anim.getKeyFrame(time, true), 2, 378, 48, 48);
+
+		pauseButton.draw(batch);
 
 		batch.end();
 	}

@@ -8,7 +8,6 @@ public class ScoreUI {
 	private ShapeRenderer renderer;
 	private SpriteBatch batch;
 	private HpBar hpBar;
-	private PauseButton pauseButton;
 	private float x;
 	private float y;
 	private float width;
@@ -22,7 +21,6 @@ public class ScoreUI {
 		renderer = new ShapeRenderer();
 		batch = new SpriteBatch();
 		hpBar = new HpBar();
-		pauseButton = new PauseButton();
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -33,7 +31,6 @@ public class ScoreUI {
 
 	public void drawShapeRenderer(){
 		hpBar.draw(batch, renderer);
-		pauseButton.draw(renderer);
 
 		if(debugMode){
 			renderer.begin(ShapeType.Line);

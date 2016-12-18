@@ -42,7 +42,7 @@ public class GameScreen implements Screen{
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
 		    Rectangle pauseBounds = new Rectangle();
-		    pauseBounds.set(770, 449, 30, 30);
+		    pauseBounds.set(762, 442, 32, 32);
 		    if (pauseBounds.contains(touchPoint.x, touchPoint.y)) {
 		        pause();
 		    }
