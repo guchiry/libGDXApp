@@ -15,6 +15,7 @@ public class Note {
 		this.speed = Setting.NOTES_SPEED;
 		sprite = new Sprite(new Texture(Gdx.files.internal("res/" + "Goblin.png")));
 		sprite.setScale(3f);
+		sprite.setOrigin(0, 0);
 	}
 
 	public Vector2 getPosition(){

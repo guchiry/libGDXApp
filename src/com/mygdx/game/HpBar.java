@@ -16,7 +16,7 @@ public class HpBar extends HitPoint{
 
 	public void drawFrame(SpriteBatch batch){
 		sprite.setScale(3f);
-		sprite.setPosition(86, 576);
+		sprite.setPosition(86, 460);
 		sprite.draw(batch);
 	}
 

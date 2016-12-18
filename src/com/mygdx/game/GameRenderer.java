@@ -20,20 +20,18 @@ public class GameRenderer {
 	ShapeRenderer renderer = new ShapeRenderer();
 	Sprite img;
 	Animation anim;
-	private PauseButton pauseButton;
 	float time = 0;
 
-	public GameRenderer(Score score, OrthographicCamera cam){
-		this.score = score;
+	public GameRenderer(OrthographicCamera cam){
 		this.cam = cam;
+		score = new Score(cam);
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		font.setColor(1, 0, 0, 1);
 		font.getData().setScale(1.3f);
-		img = new Sprite(new Texture(Gdx.files.internal("res/scoreUI.png")));
+		img = new Sprite(new Texture(Gdx.files.internal("res/scoreUIver2.png")));
 		TextureRegion[] split = new TextureRegion(new Texture(Gdx.files.internal("res/kaede2.png"))).split(16, 16)[0];
 		anim = new Animation(0.5f, split[1],split[0],split[1],split[2]);
-		pauseButton = new PauseButton();
 	}
 
 	private void update(float delta){
@@ -45,9 +43,7 @@ public class GameRenderer {
 		time += delta;
 
 		// ScoreUIの描画
-		renderer.setProjectionMatrix(cam.combined);
-		PlayUI playUi = score.getPlayUI();
-		renderer = playUi.getShapeRenderer();
+		score.getPlayUI().draw(batch, renderer);
 
 		//　ノーツ(ライン)の描画
 		renderer.setProjectionMatrix(cam.combined);
@@ -64,13 +60,12 @@ public class GameRenderer {
 		batch.begin();
 
 		// scoreUIの描画
-		img.setPosition(254, 380);
-		img.setScale(3f);
+		img.setPosition(80, 332);
 		img.draw(batch);
 		// ノーツ(画像部分)の描画
 		if(!score.getNoteDisp().isEmpty()){
 			for(Note note : score.getNoteDisp().getNotesList()){
-				note.getSprite().setPosition(note.getPosition().x-8, note.getPosition().y-8);
+				note.getSprite().setPosition(note.getPosition().x-24, note.getPosition().y-24);
 				note.getSprite().draw(batch);
 			}
 		}
@@ -78,9 +73,7 @@ public class GameRenderer {
 		font.draw(batch, "Success:" + score.getDecision().getSuccessNum() + " Miss:" + score.getDecision().getMissNum(), 10, 40);
 		if(score.getTouchTime() < Setting.DICISION_FADE_TIME) font.draw(batch, score.getDicisionStr(), 20, 440);
 
-		batch.draw(anim.getKeyFrame(time, true), 2, 378, 48, 48);
-
-		pauseButton.draw(batch);
+		batch.draw(anim.getKeyFrame(time, true), 16, 360, 48, 48);
 
 		batch.end();
 	}

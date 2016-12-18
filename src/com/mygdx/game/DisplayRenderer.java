@@ -7,9 +7,9 @@ public class DisplayRenderer {
 
 	OrthographicCamera cam;
 
-	public DisplayRenderer(World world,Score score, OrthographicCamera cam){
+	public DisplayRenderer(World world, OrthographicCamera cam){
 		this.cam = cam;
-		gameRenderer = new GameRenderer(score, this.cam);
+		gameRenderer = new GameRenderer(this.cam);
 	}
 
 	public void render(float delta){

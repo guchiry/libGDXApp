@@ -30,7 +30,7 @@ public class NoteDisplay {
 			if(elapsedFrame >= noteGenerater.getLateNote()){
 				elapsedFrame = 0;
 				noteGenerater.removeNote(0);
-				addNote(new Vector2(800, 400));
+				addNote(new Vector2(740, 392));
 			}
 		}
 	}

@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class GameScreen implements Screen{
 
 	private World world;
-	private Score score;
+
 	private OrthographicCamera cam;
 	private Viewport viewport;
 	private DisplayRenderer renderer;
@@ -24,9 +24,8 @@ public class GameScreen implements Screen{
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
 
 		world = new World();
-		score = new Score();
 
-		renderer = new DisplayRenderer(world, score, cam);
+		renderer = new DisplayRenderer(world, cam);
 	}
 
 	@Override

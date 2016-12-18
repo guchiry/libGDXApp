@@ -1,37 +1,39 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class PlayUI {
-	private ShapeRenderer renderer;
-	private SpriteBatch batch;
 	private HpBar hpBar;
+	private PauseButton pauseButton;
 	private float x;
 	private float y;
 	private float centerX;
-	private float centerY;
+	private OrthographicCamera cam;
 
 	private boolean debugMode = true;
 
-	public PlayUI(float x, float y){
-		renderer = new ShapeRenderer();
-		batch = new SpriteBatch();
+	public PlayUI(float x, float y, OrthographicCamera cam){
 		hpBar = new HpBar();
+		pauseButton = new PauseButton();
+		this.cam = cam;
 		this.x = x;
 		this.y = y;
-		this.centerX = this.x + 80;
-		this.centerY = this.y + 80;
+		this.centerX = this.x + 72;
 	}
 
-	public void drawShapeRenderer(){
+	public void draw(SpriteBatch batch, ShapeRenderer renderer){
+		renderer.setProjectionMatrix(cam.combined);
 		renderer.begin(ShapeType.Filled);
 		hpBar.drawBar(renderer);
 		renderer.end();
 
+		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
 		hpBar.drawFrame(batch);
+		pauseButton.draw(batch);
 		batch.end();
 
 		if(debugMode){
@@ -47,17 +49,8 @@ public class PlayUI {
 		debugMode = !debugMode;
 	}
 
-	public ShapeRenderer getShapeRenderer(){
-		drawShapeRenderer();
-		return this.renderer;
-	}
-
 	public float getCenterX(){
 		return centerX;
-	}
-
-	public float getCenterY(){
-		return centerY;
 	}
 
 	public HpBar getHpBar(){
