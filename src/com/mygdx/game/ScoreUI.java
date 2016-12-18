@@ -1,10 +1,12 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class ScoreUI {
 	private ShapeRenderer renderer;
+	private SpriteBatch batch;
 	private HpBar hpBar;
 	private PauseButton pauseButton;
 	private float x;
@@ -18,6 +20,7 @@ public class ScoreUI {
 
 	public ScoreUI(float x, float y, float width, float height){
 		renderer = new ShapeRenderer();
+		batch = new SpriteBatch();
 		hpBar = new HpBar();
 		pauseButton = new PauseButton();
 		this.x = x;
@@ -29,14 +32,7 @@ public class ScoreUI {
 	}
 
 	public void drawShapeRenderer(){
-		renderer.begin(ShapeType.Line);
-		renderer.setColor(1f, 1f, 1f, 1);
-		renderer.line(x, centerY, x + width, centerY);
-		renderer.line(centerX, y + height/4, centerX, y + (height/4)*3);
-		renderer.circle(centerX, centerY, 10f);
-		renderer.end();
-
-		hpBar.draw(renderer);
+		hpBar.draw(batch, renderer);
 		pauseButton.draw(renderer);
 
 		if(debugMode){
