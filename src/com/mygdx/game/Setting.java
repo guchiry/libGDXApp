@@ -1,4 +1,6 @@
 package com.mygdx.game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 
 public class Setting {
 	public static final float LOGICAL_WIDTH = 800;
@@ -12,8 +14,7 @@ public class Setting {
 	public static final float SUCCESS_DISTANCE = 20f;
 	public static final float MISS_DISTANCE = 35f;
 	public static final float GOOD_DISTANCE = SUCCESS_DISTANCE;
+	public static final float GREAT_DISTANCE = 20f;
+	public static final float PERFECT_DISTANCE = 10f;
 	public static final float GREAT_DISTANCE = 10f;
 	public static final float PERFECT_DISTANCE = 5f;
-
-	public static final int ALL_NUMBER = 1;
-}
