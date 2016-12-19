@@ -10,8 +10,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class GameScreen extends MyScreenAdapter{
-	private World world;
-
 	private OrthographicCamera cam;
 	private Viewport viewport;
 
@@ -28,9 +26,7 @@ public class GameScreen extends MyScreenAdapter{
 		this.cam.position.set(Setting.LOGICAL_WIDTH/2, Setting.LOGICAL_HEIGHT/2, 0);
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
 
-		world = new World();
-
-		renderer = new DisplayRenderer(world, cam);
+		renderer = new DisplayRenderer(cam);
 
 		music = Gdx.audio.newMusic(Gdx.files.internal("res/kaede.mp3"));
 
