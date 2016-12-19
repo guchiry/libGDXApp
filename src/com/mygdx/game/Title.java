@@ -18,7 +18,7 @@ public class Title extends MyScreenAdapter {
     SpriteBatch batch;
     Texture img;
     BitmapFont font;
-    ShapeRenderer debugRenderer;
+    ShapeRenderer renderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
 
@@ -29,7 +29,7 @@ public class Title extends MyScreenAdapter {
         super(game);
         batch = new SpriteBatch();
         font = new BitmapFont();
-        debugRenderer = new ShapeRenderer();
+        renderer = new ShapeRenderer();
 
 		}
     @Override
@@ -47,35 +47,35 @@ public class Title extends MyScreenAdapter {
 
     @Override
     public void render (float delta) {
-    	//Gdx.app.log(LOG_TAG, "render");
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
 			game.setScreen(new GameScreen(game));
         }
         time += delta;
 
-        batch.begin(); // 描画の開始
+        batch.begin();
         font.getData().setScale(3f);
         font.draw(batch, "kimiyasu", 280, 410);
         font.getData().setScale(1f);
         font.draw(batch, "Game start", 365, 175);
         font.draw(batch, "Exit", 390, 115);
-        batch.end(); // 描画の終了
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        debugRenderer.rect(150, 350, 500,100);
-        debugRenderer.rect(300, 150, 200,50);
+        batch.end();
 
-        debugRenderer.end();
+        renderer.begin(ShapeRenderer.ShapeType.Line);
+        renderer.rect(150, 350, 500,100);
+        renderer.rect(300, 150, 200,50);
+
+        renderer.end();
 
         //ここからフェードインのテスト
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        debugRenderer.begin(ShapeType.Filled);
+        renderer.begin(ShapeType.Filled);
         if(time<=2){
-        	debugRenderer.setColor(0, 0, 0, time/2);
+        	renderer.setColor(0, 0, 0, time/2);
         }
-        debugRenderer.rect(0, 0, 800,480);
-        debugRenderer.end();
+        renderer.rect(0, 0, 800,480);
+        renderer.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
         //テストおわり
 
@@ -86,13 +86,12 @@ public class Title extends MyScreenAdapter {
 		    viewport.unproject(touchPoint.set(x, y, 0));
 			if(300<touchPoint.x && touchPoint.x<500){
 				if(160>touchPoint.y && 115<touchPoint.y){
-					game.setScreen(new Chara(game));
+					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
 			if(300<touchPoint.x && touchPoint.x<500){
 				if(110>touchPoint.y && 65<touchPoint.y){
 					Gdx.app.exit();
-					//System.out.println("bbb");
 				}
 			}
 
@@ -106,9 +105,9 @@ public class Title extends MyScreenAdapter {
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "dispose");
-    font.dispose();
-    batch.dispose();
-    debugRenderer.dispose();
+    	 font.dispose();
+    	 batch.dispose();
+    	 renderer.dispose();
     }
 
 }

@@ -11,29 +11,30 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
-public class Chara extends MyScreenAdapter {
-	private static final String LOG_TAG = Chara.class.getSimpleName();
-	SpriteBatch batch;
+public class DifficultySelectDisplay extends MyScreenAdapter {
+	private static final String LOG_TAG = DifficultySelectDisplay.class.getSimpleName();
+    SpriteBatch batch;
     Texture img1;
     Texture img2;
     Texture img3;
     Texture img4;
-    BitmapFont font;
-    ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
 
-	public Chara(LibGdxsample game) {
+    BitmapFont font;
+    ShapeRenderer renderer;
+
+    public DifficultySelectDisplay(LibGdxsample game) {
         super(game);
-        batch = new SpriteBatch();
         img1 = new Texture("res/hidari.png");
         img2 = new Texture("res/mae.png");
         img3 = new Texture("res/migi.png");
         img4 = new Texture("res/usiro.png");
+        batch = new SpriteBatch();
         font = new BitmapFont();
-        debugRenderer = new ShapeRenderer();
-
+        renderer = new ShapeRenderer();
 	}
+
     @Override
     public void resize(int width, int height) {
 		viewport.update(width, height);
@@ -45,71 +46,72 @@ public class Chara extends MyScreenAdapter {
     	this.cam = new OrthographicCamera(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT);
 		this.cam.position.set(Setting.LOGICAL_WIDTH/2, Setting.LOGICAL_HEIGHT/2, 0);
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
-
     }
 
     @Override
     public void render (float delta) {
-    	//Gdx.app.log(LOG_TAG, "render");
-    	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
-        batch.begin(); // 描画の開始
-        batch.draw(img1, 50, 80);
-        batch.draw(img2, 50, 280);
-        batch.draw(img3, 450, 80);
-        batch.draw(img4, 450, 280);// テクスチャーを描画
-        //font.setColor(Color.RED);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+        batch.draw(img1, 220, 300);
+        batch.draw(img2, 320, 300);
+        batch.draw(img3, 420, 300);
+        batch.draw(img4, 520, 300);
+
         font.getData().setScale(1f);
-        font.draw(batch, "kyokumei", 130, 110);
-        font.draw(batch, "kyokumei", 130, 310);
-        font.draw(batch, "kyokumei", 530, 110);
-        font.draw(batch, "kyokumei", 530, 310);
-        batch.end(); // 描画の終了
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        debugRenderer.rect(120, 90, 270,30);
-        debugRenderer.rect(120, 290, 270,30);
-        debugRenderer.rect(520, 90, 270,30);
-        debugRenderer.rect(520, 290, 270,30);
-        debugRenderer.end();
+        font.draw(batch, "easy", 380, 235);
+        font.draw(batch, "normal", 375, 175);
+        font.draw(batch, "hard", 380, 115);
+        font.draw(batch, "back", 35, 565);
+        batch.end();
+        renderer.begin(ShapeRenderer.ShapeType.Line);
+        renderer.rect(300, 210, 200,50);
+        renderer.rect(300, 150, 200,50);
+        renderer.rect(300, 90, 200,50);
+        renderer.rect(10, 540, 80,40);
+
+        renderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
-			if(120<touchPoint.x && touchPoint.x<390){
-				if(90>touchPoint.y && 60<touchPoint.y){
-					game.setScreen(new Nanido(game));
-					//game.setScreen(new Chara(game));
+		    if(10<touchPoint.x && touchPoint.x<80){
+				if(465>touchPoint.y && 430<touchPoint.y){
+					System.out.println("back");
+					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
-			if(120<touchPoint.x && touchPoint.x<390){
-				if(260>touchPoint.y && 230<touchPoint.y){
+			if(300<touchPoint.x && touchPoint.x<500){
+				if(210>touchPoint.y && 165<touchPoint.y){
+					System.out.println("aaa");
+					game.setScreen(new Result(game));
+				}
+			}
+			if(300<touchPoint.x && touchPoint.x<500){
+				if(160>touchPoint.y && 115<touchPoint.y){
 					System.out.println("bbb");
 				}
 			}
-			if(520<touchPoint.x && touchPoint.x<790){
-				if(90>touchPoint.y && 60<touchPoint.y){
-					System.out.println("bbb");
-				}
-			}
-			if(520<touchPoint.x && touchPoint.x<790){
-				if(260>touchPoint.y && 230<touchPoint.y){
-					System.out.println("bbb");
+			if(300<touchPoint.x && touchPoint.x<500){
+				if(110>touchPoint.y && 65<touchPoint.y){
+					System.out.println("ccc");
 				}
 			}
 		}
-
     }
+
     @Override
     public void hide() {
         Gdx.app.log(LOG_TAG, "hide");
         dispose();
     }
+
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "hide");
-    font.dispose();
-    batch.dispose();
-    debugRenderer.dispose();
+    	 font.dispose();
+    	 batch.dispose();
+    	 renderer.dispose();
     }
 
 }

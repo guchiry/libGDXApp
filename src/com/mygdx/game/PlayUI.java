@@ -21,7 +21,6 @@ public class PlayUI {
 
 	public PlayUI(float x, float y, OrthographicCamera cam){
 		hpBar = new HpBar(x,y);
-		//x= 80, y = 332
 		pauseButton = new PauseButton(x,y);
 		scoreImg = new Sprite(new Texture(Gdx.files.internal("res/scoreUI.png")));
 		scoreImg.setPosition(x, y);

@@ -16,8 +16,8 @@ public class Result extends MyScreenAdapter {
     SpriteBatch batch;
     Texture img;
     BitmapFont font;
-    ShapeRenderer debugRenderer;
-	int i;
+    ShapeRenderer renderer;
+	int time;
 	private OrthographicCamera cam;
 	private Viewport viewport;
 
@@ -25,12 +25,14 @@ public class Result extends MyScreenAdapter {
         super(game);
         batch = new SpriteBatch();
         font = new BitmapFont();
-        debugRenderer = new ShapeRenderer();
-		}
+        renderer = new ShapeRenderer();
+	}
+
     @Override
     public void resize(int width, int height) {
 		viewport.update(width, height);
 	}
+
     @Override
     public void show () {
     	Gdx.app.log(LOG_TAG, "show");
@@ -42,56 +44,55 @@ public class Result extends MyScreenAdapter {
 
     @Override
     public void render (float delta) {
-    	i++;
-    	//Gdx.app.log(LOG_TAG, "render");
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
+    	time++;
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        debugRenderer.rect(100, 350, 400,50);
-        debugRenderer.rect(550, 350, 150,50);
-        debugRenderer.rect(50, 250, 160,40);
-        debugRenderer.rect(230, 250, 160,40);
-        debugRenderer.rect(410, 250, 160,40);
-        debugRenderer.rect(590, 250, 160,40);
-        debugRenderer.rect(200, 90, 400,80);
-        debugRenderer.rect(400, 430, 150,40);
-        debugRenderer.rect(600, 430, 150,40);
+        renderer.begin(ShapeRenderer.ShapeType.Line);
+        renderer.rect(100, 350, 400,50);
+        renderer.rect(550, 350, 150,50);
+        renderer.rect(50, 250, 160,40);
+        renderer.rect(230, 250, 160,40);
+        renderer.rect(410, 250, 160,40);
+        renderer.rect(590, 250, 160,40);
+        renderer.rect(200, 90, 400,80);
+        renderer.rect(400, 430, 150,40);
+        renderer.rect(600, 430, 150,40);
+        renderer.end();
 
-        debugRenderer.end();
-        batch.begin(); // 描画の開始
+        batch.begin();
         font.getData().setScale(1f);
         font.draw(batch, "title", 460, 450);
         font.draw(batch, "exit", 670, 450);
         font.draw(batch, "kyokumei", 150, 375);
         font.draw(batch, "nanido", 600, 375);
         font.draw(batch, "perfect           /100", 80, 270);
-        if(i>100){
+        if(time>100){
         	font.draw(batch, "a", 160, 270);
         }
 
         font.draw(batch, "great             /100", 265, 270);
-        if(i>150){
+        if(time>150){
        	font.draw(batch, "b", 340, 270);
         }
        	font.draw(batch, "good              /100", 450, 270);
-       	if(i>200){
+       	if(time>200){
        	font.draw(batch, "c", 530, 270);
        	}
        	font.draw(batch, "fault              /100", 625, 270);
-       	if(i>250){
+       	if(time>250){
        	font.draw(batch, "d", 700, 270);
        	}
        	font.draw(batch, "Total points", 260, 115);
        	font.getData().setScale(3f);
-       	if(i>350){
+       	if(time>350){
        	font.draw(batch, "XXXX", 400, 135);
        	}
        	font.getData().setScale(2f);
-        //font.setColor(Color.RED);
-        if(i>410){
+        if(time>410){
        	font.draw(batch, "clear", 650, 135);
         }
-        batch.end(); // 描画の終了
+        batch.end();
+
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
@@ -99,15 +100,12 @@ public class Result extends MyScreenAdapter {
 		    viewport.unproject(touchPoint.set(x, y, 0));
 		    if(400<touchPoint.x && touchPoint.x<550){
 				if(380>touchPoint.y && 340<touchPoint.y){
-					//System.out.println("title");
 					game.setScreen(new Title(game));
 				}
 			}
 		    if(600<touchPoint.x && touchPoint.x<750){
 				if(380>touchPoint.y && 340<touchPoint.y){
 					Gdx.app.exit();
-					//System.out.println("exit");
-					//game.setScreen(new Chara(game));
 				}
 			}
         }
@@ -120,8 +118,8 @@ public class Result extends MyScreenAdapter {
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "hide");
-    font.dispose();
-    batch.dispose();
-    debugRenderer.dispose();
+    	 font.dispose();
+    	 batch.dispose();
+    	 renderer.dispose();
     }
 }
