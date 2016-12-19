@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -18,7 +17,6 @@ public class GameRenderer {
 	OrthographicCamera cam;
 	BitmapFont font;
 	ShapeRenderer renderer = new ShapeRenderer();
-	Sprite img;
 	Animation anim;
 	float time = 0;
 
@@ -29,7 +27,6 @@ public class GameRenderer {
 		font = new BitmapFont();
 		font.setColor(1, 0, 0, 1);
 		font.getData().setScale(1.3f);
-		img = new Sprite(new Texture(Gdx.files.internal("res/scoreUIver2.png")));
 		TextureRegion[] split = new TextureRegion(new Texture(Gdx.files.internal("res/kaede2.png"))).split(16, 16)[0];
 		anim = new Animation(0.5f, split[1],split[0],split[1],split[2]);
 	}
@@ -59,9 +56,6 @@ public class GameRenderer {
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
 
-		// scoreUIの描画
-		img.setPosition(80, 332);
-		img.draw(batch);
 		// ノーツ(画像部分)の描画
 		if(!score.getNoteDisp().isEmpty()){
 			for(Note note : score.getNoteDisp().getNotesList()){

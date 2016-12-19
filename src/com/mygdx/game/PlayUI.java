@@ -1,6 +1,9 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -8,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 public class PlayUI {
 	private HpBar hpBar;
 	private PauseButton pauseButton;
+	private Sprite scoreImg;
 	private float x;
 	private float y;
 	private float centerX;
@@ -18,6 +22,8 @@ public class PlayUI {
 	public PlayUI(float x, float y, OrthographicCamera cam){
 		hpBar = new HpBar();
 		pauseButton = new PauseButton();
+		scoreImg = new Sprite(new Texture(Gdx.files.internal("res/scoreUIver2.png")));
+		scoreImg.setPosition(x, y);
 		this.cam = cam;
 		this.x = x;
 		this.y = y;
@@ -32,6 +38,7 @@ public class PlayUI {
 
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
+		scoreImg.draw(batch);
 		hpBar.drawFrame(batch);
 		pauseButton.draw(batch);
 		batch.end();

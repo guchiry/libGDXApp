@@ -19,7 +19,7 @@ public class NoteDisplay {
 		}
 
 		//終了処理
-		if(noteGenerater.isEmpty()){
+		if(noteGenerater.isEmpty() && dispNotesList.size == 0){
 			//なんもなす
 		}
 	}
