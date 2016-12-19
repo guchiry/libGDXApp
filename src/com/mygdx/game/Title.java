@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -20,6 +21,9 @@ public class Title extends MyScreenAdapter {
     ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
+
+
+	float time=0;
 
     public Title(LibGdxsample game) {
         super(game);
@@ -39,7 +43,6 @@ public class Title extends MyScreenAdapter {
     	this.cam = new OrthographicCamera(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT);
 		this.cam.position.set(Setting.LOGICAL_WIDTH/2, Setting.LOGICAL_HEIGHT/2, 0);
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
-
     }
 
     @Override
@@ -49,6 +52,8 @@ public class Title extends MyScreenAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
 			game.setScreen(new GameScreen(game));
         }
+        time += delta;
+
         batch.begin(); // 描画の開始
         font.getData().setScale(3f);
         font.draw(batch, "kimiyasu", 280, 410);
@@ -59,9 +64,21 @@ public class Title extends MyScreenAdapter {
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
         debugRenderer.rect(150, 350, 500,100);
         debugRenderer.rect(300, 150, 200,50);
-        debugRenderer.rect(300, 90, 200,50);
 
         debugRenderer.end();
+
+        //ここからフェードインのテスト
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        debugRenderer.begin(ShapeType.Filled);
+        if(time<=2){
+        	debugRenderer.setColor(0, 0, 0, time/2);
+        }
+        debugRenderer.rect(0, 0, 800,480);
+        debugRenderer.end();
+        Gdx.gl.glDisable(GL20.GL_BLEND);
+        //テストおわり
+
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();

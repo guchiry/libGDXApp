@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Rectangle;
@@ -14,10 +15,13 @@ public class GameScreen extends MyScreenAdapter{
 	private OrthographicCamera cam;
 	private Viewport viewport;
 
+	private Music music;
+
 	private DisplayRenderer renderer;
 	public GameScreen(LibGdxsample game) {
-	        super(game);
-	        }
+		super(game);
+	}
+
 	@Override
 	public void show() {
 		this.cam = new OrthographicCamera(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT);
@@ -27,6 +31,13 @@ public class GameScreen extends MyScreenAdapter{
 		world = new World();
 
 		renderer = new DisplayRenderer(world, cam);
+
+		music = Gdx.audio.newMusic(Gdx.files.internal("res/kaede.mp3"));
+
+		music.setLooping(false);
+        music.setVolume(0.8f);
+        music.play();
+
 	}
 
 	@Override

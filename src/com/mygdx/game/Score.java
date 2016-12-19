@@ -24,7 +24,7 @@ public class Score {
 		decision = new GradeDecision(this);
 		controller = new Controller(this, playUi);
 
-		sound = Gdx.audio.newSound(Gdx.files.internal("res/" + "斬撃音.wav"));
+		sound = Gdx.audio.newSound(Gdx.files.internal("res/" + "TouchSE.wav"));
 	}
 
 	public void update(float delta){
