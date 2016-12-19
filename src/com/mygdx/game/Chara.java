@@ -1,20 +1,15 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.Color;
 
 public class Chara extends MyScreenAdapter {
 	private static final String LOG_TAG = Chara.class.getSimpleName();
@@ -27,7 +22,7 @@ public class Chara extends MyScreenAdapter {
     ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
-	
+
 	public Chara(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
@@ -37,7 +32,7 @@ public class Chara extends MyScreenAdapter {
         img4 = new Texture("res/usiro.png");
         font = new BitmapFont();
         debugRenderer = new ShapeRenderer();
-    
+
 	}
     @Override
     public void resize(int width, int height) {
@@ -63,11 +58,11 @@ public class Chara extends MyScreenAdapter {
         batch.draw(img3, 450, 80);
         batch.draw(img4, 450, 280);// テクスチャーを描画
         //font.setColor(Color.RED);
-        font.getData().setScale(1f); 
-        font.draw(batch, "kyokumei", 130, 110); 
-        font.draw(batch, "kyokumei", 130, 310); 
-        font.draw(batch, "kyokumei", 530, 110); 
-        font.draw(batch, "kyokumei", 530, 310); 
+        font.getData().setScale(1f);
+        font.draw(batch, "kyokumei", 130, 110);
+        font.draw(batch, "kyokumei", 130, 310);
+        font.draw(batch, "kyokumei", 530, 110);
+        font.draw(batch, "kyokumei", 530, 310);
         batch.end(); // 描画の終了
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
         debugRenderer.rect(120, 90, 270,30);
@@ -102,7 +97,7 @@ public class Chara extends MyScreenAdapter {
 				}
 			}
 		}
-        
+
     }
     @Override
     public void hide() {

@@ -1,20 +1,16 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.Color;
 
 public class Title extends MyScreenAdapter {
 	private static final String LOG_TAG = Title.class.getSimpleName();
@@ -24,13 +20,13 @@ public class Title extends MyScreenAdapter {
     ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
-	
+
     public Title(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
         font = new BitmapFont();
         debugRenderer = new ShapeRenderer();
-        
+
 		}
     @Override
     public void resize(int width, int height) {
@@ -51,12 +47,12 @@ public class Title extends MyScreenAdapter {
     	//Gdx.app.log(LOG_TAG, "render");
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
-			game.setScreen(new GameScreen(game)); 
+			game.setScreen(new GameScreen(game));
         }
         batch.begin(); // 描画の開始
-        font.getData().setScale(3f); 
+        font.getData().setScale(3f);
         font.draw(batch, "kimiyasu", 280, 410);
-        font.getData().setScale(1f); 
+        font.getData().setScale(1f);
         font.draw(batch, "Game start", 365, 175);
         font.draw(batch, "Exit", 390, 115);
         batch.end(); // 描画の終了
@@ -64,7 +60,7 @@ public class Title extends MyScreenAdapter {
         debugRenderer.rect(150, 350, 500,100);
         debugRenderer.rect(300, 150, 200,50);
         debugRenderer.rect(300, 90, 200,50);
-        
+
         debugRenderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
@@ -82,7 +78,7 @@ public class Title extends MyScreenAdapter {
 					//System.out.println("bbb");
 				}
 			}
-			
+
 		}
     }
     @Override

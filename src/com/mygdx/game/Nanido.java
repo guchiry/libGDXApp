@@ -1,19 +1,15 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.Color;
 
 public class Nanido extends MyScreenAdapter {
 	private static final String LOG_TAG = Nanido.class.getSimpleName();
@@ -24,7 +20,7 @@ public class Nanido extends MyScreenAdapter {
     Texture img4;
     private OrthographicCamera cam;
 	private Viewport viewport;
-	
+
     BitmapFont font;
     ShapeRenderer debugRenderer;
     public Nanido(LibGdxsample game) {
@@ -47,7 +43,6 @@ public class Nanido extends MyScreenAdapter {
     	this.cam = new OrthographicCamera(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT);
 		this.cam.position.set(Setting.LOGICAL_WIDTH/2, Setting.LOGICAL_HEIGHT/2, 0);
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
-
     }
 
     @Override
@@ -59,8 +54,8 @@ public class Nanido extends MyScreenAdapter {
         batch.draw(img2, 320, 300);
         batch.draw(img3, 420, 300);
         batch.draw(img4, 520, 300);// テクスチャーを描画
-        
-        font.getData().setScale(1f); 
+
+        font.getData().setScale(1f);
         font.draw(batch, "easy", 380, 235);
         font.draw(batch, "normal", 375, 175);
         font.draw(batch, "hard", 380, 115);
@@ -71,7 +66,7 @@ public class Nanido extends MyScreenAdapter {
         debugRenderer.rect(300, 150, 200,50);
         debugRenderer.rect(300, 90, 200,50);
         debugRenderer.rect(10, 540, 80,40);
-        
+
         debugRenderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
@@ -101,8 +96,8 @@ public class Nanido extends MyScreenAdapter {
 					System.out.println("ccc");
 				}
 			}
-			
-			
+
+
 		}
     }
     @Override
