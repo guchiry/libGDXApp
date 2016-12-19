@@ -39,7 +39,7 @@ public class GameRenderer {
 		this.cam.update();
 		time += delta;
 
-		// ScoreUIの描画
+		// PlayUIの描画
 		score.getPlayUI().draw(batch, renderer);
 
 		//　ノーツ(ライン)の描画
