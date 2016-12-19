@@ -14,7 +14,7 @@ public class MainMenuScreen extends MyScreenAdapter {
         super(game);
         batch = new SpriteBatch();
         font = new BitmapFont();
-		}
+	}
     @Override
     public void resize(int width, int height) {
         Gdx.app.log(LOG_TAG, "resize");
@@ -28,8 +28,8 @@ public class MainMenuScreen extends MyScreenAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
         batch.begin(); // 描画の開始
         //font.setColor(Color.RED);
-        font.getData().setScale(1f); 
-        font.draw(batch, "play", 130, 110); 
+        font.getData().setScale(1f);
+        font.draw(batch, "play", 130, 110);
         font.draw(batch, "normal", 230, 110);
         font.draw(batch, "hard", 340, 110);
         batch.end(); // 描画の終了
@@ -37,7 +37,7 @@ public class MainMenuScreen extends MyScreenAdapter {
 		//if (Gdx.input.justTouched()) {
 			//game.setScreen(new GameScreen(game));
 		//}
-		
+
 	}
 
     @Override

@@ -35,7 +35,6 @@ public class LibGdxsample extends Game {
 
     @Override
     public void dispose() {
-        //super.dispose();
         Gdx.app.log(LOG_TAG, "dispose");
     }
 }
