@@ -1,8 +1,12 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -13,14 +17,18 @@ public class GameRenderer {
 	OrthographicCamera cam;
 	BitmapFont font;
 	ShapeRenderer renderer = new ShapeRenderer();
+	Animation anim;
+	float time = 0;
 
-	public GameRenderer(Score score, OrthographicCamera cam){
-		this.score = score;
+	public GameRenderer(OrthographicCamera cam){
 		this.cam = cam;
+		score = new Score(cam);
 		batch = new SpriteBatch();
 		font = new BitmapFont();
 		font.setColor(1, 0, 0, 1);
-		font.getData().setScale(1.5f);
+		font.getData().setScale(1.3f);
+		TextureRegion[] split = new TextureRegion(new Texture(Gdx.files.internal("res/kaede2.png"))).split(16, 16)[0];
+		anim = new Animation(0.5f, split[1],split[0],split[1],split[2]);
 	}
 
 	private void update(float delta){
@@ -29,18 +37,10 @@ public class GameRenderer {
 
 	private void draw(float delta){
 		this.cam.update();
-
-		//文字描画
-		batch.setProjectionMatrix(cam.combined);
-		batch.begin();
-		font.draw(batch, "Success:" + score.getDecision().getSuccessNum() + " Miss:" + score.getDecision().getMissNum(), 10, 40);
-		if(score.getTouchTime() < Setting.DICISION_FADE_TIME) font.draw(batch, score.getDicisionStr(), 20, 440);
-		batch.end();
+		time += delta;
 
 		// ScoreUIの描画
-		renderer.setProjectionMatrix(cam.combined);
-		ScoreUI scoreui = score.getScoreUI();
-		renderer = scoreui.getShapeRenderer();
+		score.getPlayUI().draw(batch, renderer);
 
 		//　ノーツ(ライン)の描画
 		renderer.setProjectionMatrix(cam.combined);
@@ -53,15 +53,22 @@ public class GameRenderer {
 		}
 		renderer.end();
 
-		// ノーツ(画像部分)の描画
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
+
+		// ノーツ(画像部分)の描画
 		if(!score.getNoteDisp().isEmpty()){
 			for(Note note : score.getNoteDisp().getNotesList()){
-				note.getSprite().setPosition(note.getPosition().x-8, note.getPosition().y-8);
+				note.getSprite().setPosition(note.getPosition().x-24, note.getPosition().y-24);
 				note.getSprite().draw(batch);
 			}
 		}
+		//文字描画
+		font.draw(batch, "Success:" + score.getDecision().getSuccessNum() + " Miss:" + score.getDecision().getMissNum(), 10, 40);
+		if(score.getTouchTime() < Setting.DICISION_FADE_TIME) font.draw(batch, score.getDicisionStr(), 20, 440);
+
+		batch.draw(anim.getKeyFrame(time, true), 16, 360, 48, 48);
+
 		batch.end();
 	}
 

@@ -16,14 +16,14 @@ public class GameScreen extends MyScreenAdapter{
 	private static final String LOG_TAG = Chara.class.getSimpleName();
 
 	private World world;
-	private Score score;
+
 	private OrthographicCamera cam;
 	private Viewport viewport;
-	private WorldRenderer renderer;
+
+	private DisplayRenderer renderer;
 	public GameScreen(LibGdxsample game) {
 	        super(game);
 	        }
-
 	@Override
 	public void show() {
 		this.cam = new OrthographicCamera(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT);
@@ -31,9 +31,8 @@ public class GameScreen extends MyScreenAdapter{
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
 
 		world = new World();
-		score = new Score();
 
-		renderer = new WorldRenderer(world, score, cam);
+		renderer = new DisplayRenderer(world, cam);
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public class GameScreen extends MyScreenAdapter{
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
 		    Rectangle pauseBounds = new Rectangle();
-		    pauseBounds.set(770, 449, 30, 30);
+		    pauseBounds.set(762, 442, 32, 32);
 		    if (pauseBounds.contains(touchPoint.x, touchPoint.y)) {
 		        pause();
 		        //System.out.println("aaaa");

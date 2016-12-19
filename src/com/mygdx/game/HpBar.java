@@ -1,27 +1,29 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class HpBar extends HitPoint{
+	private Sprite sprite;
 
 	public HpBar(){
 		super();
+		sprite = new Sprite(new Texture(Gdx.files.internal("res/HPbar.png")));
 	}
 
-	public void draw(ShapeRenderer renderer){
-		renderer.begin(ShapeType.Line);
-		renderer.setColor(1, 1, 1, 1);
-		renderer.rect(20,455,241,15);
-		renderer.end();
-		renderer.begin(ShapeType.Filled);
-		renderer.rect(20,455,40,15);
+	public void drawFrame(SpriteBatch batch){
+		sprite.setScale(3f);
+		sprite.setPosition(86, 460);
+		sprite.draw(batch);
+	}
 
+	public void drawBar(ShapeRenderer renderer){
 		if(hp>=0){
 			renderer.setColor(0,1,0,1);
-			renderer.rect(60, 456, hp * 2, 14);
+			renderer.rect(60, 460, hp * 1.5f, 6);
 		}
-
-		renderer.end();
 	}
 }
