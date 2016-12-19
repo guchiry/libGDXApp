@@ -18,30 +18,7 @@ public class LibGdxsample extends Game {
     private Screen nextScreen;
     private Setting settings;
     //NullPointerException null;
-    public boolean seOn() {
-        return settings.seOn();
-    }
-
-    public boolean bgmOn() {
-        return settings.bgmOn();
-    }
-
-    public int hiscore() {
-        return settings.hiscore();
-    }
-
-    public void toggleSeOn() {
-        settings.toggleSeOn();
-    }
-
-    public void toggleBgmOn() {
-        settings.toggleBgmOn();
-    }
-
-    public void hiscore(int score) {
-        settings.hiscore(score);
-    }
-
+   
     @Override
     public void create() {
        // null = new NullPointerException();
