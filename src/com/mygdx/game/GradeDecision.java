@@ -6,8 +6,12 @@ public class GradeDecision {
 	}
 
 	private Score score;
-	private int successNum = 0;
+	private int perfectNum = 0;
+	private int greatNum = 0;
+	private int goodNum = 0;
 	private int missNum = 0;
+	private int scoreNum = 0;
+	private int combo = 0;
 
 	private Grade grade = null;
 
@@ -32,7 +36,6 @@ public class GradeDecision {
 		}
 	}
 
-	//通り過ぎたやつ　まだ来てない奴　近いほうを判定
 	public float getDistance(){
 		float distance = Setting.MAX_DISTANCE;
 		if(!score.getNoteDisp().isEmpty()){
@@ -56,16 +59,32 @@ public class GradeDecision {
 		return "";
 	}
 
-	public int getSuccessNum(){
-		return successNum;
+	public int getPerfectNum(){
+		return perfectNum;
 	}
 
 	public int getMissNum(){
 		return missNum;
 	}
 
-	public void increaseSuccessNum() {
-		this.successNum++;
+	public void increaseComboNum(){
+		this.combo++;
+	}
+
+	public void resetComboNum(){
+		this.combo = 0;
+	}
+
+	public void increasePerfectNum() {
+		this.perfectNum++;
+	}
+
+	public void increaseGreatNum() {
+		this.greatNum++;
+	}
+
+	public void increaseGoodNum() {
+		this.goodNum++;
 	}
 
 	public void increaseMissNum() {

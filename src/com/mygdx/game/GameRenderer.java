@@ -25,7 +25,7 @@ public class GameRenderer {
 		score = new Score(cam);
 		batch = new SpriteBatch();
 		font = new BitmapFont();
-		font.setColor(1, 0, 0, 1);
+		font.setColor(0, 1, 1, 1);
 		font.getData().setScale(1.1f);
 		TextureRegion[] split = new TextureRegion(new Texture(Gdx.files.internal("res/kaede2.png"))).split(16, 16)[0];
 		anim = new Animation(0.5f, split[1],split[0],split[1],split[2]);
@@ -55,7 +55,6 @@ public class GameRenderer {
 
 		batch.setProjectionMatrix(cam.combined);
 		batch.begin();
-
 		// ノーツ(画像部分)の描画
 		if(!score.getNoteDisp().isEmpty()){
 			for(Note note : score.getNoteDisp().getNotesList()){
@@ -64,7 +63,7 @@ public class GameRenderer {
 			}
 		}
 		//文字描画
-		font.draw(batch, "Success:" + score.getDecision().getSuccessNum() + " Miss:" + score.getDecision().getMissNum(), 10, 40);
+		font.draw(batch, "Perfect:" + score.getDecision().getPerfectNum() + " Miss:" + score.getDecision().getMissNum(), 10, 40);
 		if(score.getTouchTime() < Setting.DICISION_FADE_TIME) font.draw(batch, score.getDicisionStr(), 5, 440);
 
 		batch.draw(anim.getKeyFrame(time, true), 16, 360, 48, 48);
