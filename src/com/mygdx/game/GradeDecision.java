@@ -47,11 +47,11 @@ public class GradeDecision {
 		if(grade == Grade.PERFECT){
 			return "PERFECT";
 		}else if(grade == Grade.GREAT){
-			return "GREAT";
+			return "  GREAT";
 		}else if(grade == Grade.GOOD){
-			return "GOOD";
+			return "   GOOD";
 		}else if(grade == Grade.MISS){
-			return "MISS";
+			return "   MISS";
 		}
 		return "";
 	}
