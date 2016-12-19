@@ -31,7 +31,7 @@ public class Chara extends MyScreenAdapter {
 	public Chara(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
-        img1 = new Texture("res/hidari.png");
+        img1 = new Texture("res/startbutton3.png");
         img2 = new Texture("res/mae.png");
         img3 = new Texture("res/migi.png");
         img4 = new Texture("res/usiro.png");
@@ -58,7 +58,7 @@ public class Chara extends MyScreenAdapter {
     	//Gdx.app.log(LOG_TAG, "render");
     	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
         batch.begin(); // 描画の開始
-        batch.draw(img1, 50, 80);
+        batch.draw(img1, 10, 450);
         batch.draw(img2, 50, 280);
         batch.draw(img3, 450, 80);
         batch.draw(img4, 450, 280);// テクスチャーを描画
