@@ -19,7 +19,7 @@ public class NoteDisplay {
 		}
 
 		//終了処理
-		if(noteGenerater.isEmpty()){
+		if(noteGenerater.isEmpty() && dispNotesList.size == 0){
 			//なんもなす
 		}
 	}
@@ -30,7 +30,7 @@ public class NoteDisplay {
 			if(elapsedFrame >= noteGenerater.getLateNote()){
 				elapsedFrame = 0;
 				noteGenerater.removeNote(0);
-				addNote(new Vector2(800, 400));
+				addNote(new Vector2(740, 392));
 			}
 		}
 	}

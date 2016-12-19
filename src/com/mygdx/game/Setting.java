@@ -9,11 +9,11 @@ public class Setting {
 	public static final float DICISION_FADE_TIME = 0.5f;
 
 	public static final float MAX_DISTANCE = 1000f;
-	public static final float SUCCESS_DISTANCE = 30f;
-	public static final float MISS_DISTANCE = 50f;
+	public static final float SUCCESS_DISTANCE = 20f;
+	public static final float MISS_DISTANCE = 35f;
 	public static final float GOOD_DISTANCE = SUCCESS_DISTANCE;
-	public static final float GREAT_DISTANCE = 20f;
-	public static final float PERFECT_DISTANCE = 10f;
+	public static final float GREAT_DISTANCE = 10f;
+	public static final float PERFECT_DISTANCE = 5f;
 
 	public static final int ALL_NUMBER = 1;
 }

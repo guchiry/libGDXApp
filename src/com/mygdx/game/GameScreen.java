@@ -12,7 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 public class GameScreen implements Screen{
 
 	private World world;
-	private Score score;
+
 	private OrthographicCamera cam;
 	private Viewport viewport;
 	private DisplayRenderer renderer;
@@ -24,9 +24,8 @@ public class GameScreen implements Screen{
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
 
 		world = new World();
-		score = new Score();
 
-		renderer = new DisplayRenderer(world, score, cam);
+		renderer = new DisplayRenderer(world, cam);
 	}
 
 	@Override
@@ -42,7 +41,7 @@ public class GameScreen implements Screen{
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
 		    Rectangle pauseBounds = new Rectangle();
-		    pauseBounds.set(770, 449, 30, 30);
+		    pauseBounds.set(762, 442, 32, 32);
 		    if (pauseBounds.contains(touchPoint.x, touchPoint.y)) {
 		        pause();
 		    }

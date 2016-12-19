@@ -5,10 +5,12 @@ import com.badlogic.gdx.Input;
 
 public class Controller {
 	private Score score;
+	private PlayUI playUi;
 	private boolean touchFlag = false;
 
-	public Controller(Score score){
+	public Controller(Score score, PlayUI playUi){
 		this.score = score;
+		this.playUi = playUi;
 	}
 
 	public void touched(){
@@ -20,7 +22,7 @@ public class Controller {
 			score.getDecision().evaluate();
 			if(score.getDecision().getGrade() == GradeDecision.Grade.MISS){
 				score.getDecision().increaseMissNum();
-				score.getScoreUI().getHpBar().decreaseHp();
+				playUi.getHpBar().decreaseHp();
 				score.getNoteDisp().removeNote(0);
 			}else if(!(score.getDecision().getGrade() == null)){
 				score.getDecision().increaseSuccessNum();
@@ -30,7 +32,7 @@ public class Controller {
 		}
 
 		if(Gdx.input.isKeyJustPressed(Input.Keys.D)){
-			score.getScoreUI().setDebugMode();
+			playUi.setDebugMode();
 		}
 	}
 }

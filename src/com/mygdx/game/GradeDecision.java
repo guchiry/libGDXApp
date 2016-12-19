@@ -27,14 +27,18 @@ public class GradeDecision {
 			grade = Grade.MISS;
 		}else if(score.getNoteDisp().isEmpty()){
 			grade = null;
+		}else{
+			grade = null;
 		}
 	}
 
+	//通り過ぎたやつ　まだ来てない奴　近いほうを判定
 	public float getDistance(){
 		float distance = Setting.MAX_DISTANCE;
 		if(!score.getNoteDisp().isEmpty()){
-			distance = score.getScoreUI().getCenterX() - score.getNoteDisp().getLatestNote().getPosition().x;
+			distance = score.getPlayUI().getCenterX() - score.getNoteDisp().getLatestNote().getPosition().x;
 			if(distance < 0) distance = -distance;
+
 		}
 		return distance;
 	}

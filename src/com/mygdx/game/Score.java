@@ -2,23 +2,27 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 public class Score {
-	private ScoreUI scoreui;
+	private PlayUI playUi;
 	private GradeDecision decision;
 	private NoteDisplay noteDisp;
 	private Controller controller;
+
+	private OrthographicCamera cam;
 
 	Sound sound;
 
 	//タッチ関係
 	private float touchTime = 0;
 
-	public Score(){
-		scoreui = new ScoreUI(0, 320, 800, 160);
+	public Score(OrthographicCamera cam){
+		this.cam = cam;
 		noteDisp = new NoteDisplay();
+		playUi = new PlayUI(80, 332, cam);
 		decision = new GradeDecision(this);
-		controller = new Controller(this);
+		controller = new Controller(this, playUi);
 
 		sound = Gdx.audio.newSound(Gdx.files.internal("res/" + "斬撃音.wav"));
 	}
@@ -33,19 +37,24 @@ public class Score {
 		// スコアの状態の更新
 		if(!noteDisp.isEmpty()){
 			noteDisp.update();
-			if(noteDisp.getLatestNote().getPosition().x <= 0){
+			if(noteDisp.getLatestNote().getPosition().x <= 132){
 				noteDisp.removeNote(0);
 				decision.increaseMissNum();
-				scoreui.getHpBar().decreaseHp();
+				playUi.getHpBar().decreaseHp();
 			}
 		}
 
 		controller.touched();
 
-		if(scoreui.getHpBar().getHp() <= 0){
+		if(playUi.getHpBar().getHp() <= 0){
 
 		}
 	}
+
+	public PlayUI getPlayUI(){
+		return playUi;
+	}
+
 
 	public NoteDisplay getNoteDisp(){
 		return noteDisp;
@@ -57,11 +66,6 @@ public class Score {
 
 	public float getTouchTime(){
 		return touchTime;
-	}
-
-
-	public ScoreUI getScoreUI(){
-		return scoreui;
 	}
 
 	public GradeDecision getDecision() {
