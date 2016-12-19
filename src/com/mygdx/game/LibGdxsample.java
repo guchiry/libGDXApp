@@ -10,7 +10,6 @@ public class LibGdxsample extends Game {
 
     @Override
     public void create() {
-       // null = new NullPointerException();
         Gdx.app.log(LOG_TAG, "create");
         setScreen(new Title(this));
     }
