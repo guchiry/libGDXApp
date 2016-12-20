@@ -27,7 +27,7 @@ public class NoteDisplay {
 	public void createNote(float delta){
 		elapsedTime += delta;
 		if(!noteGenerater.isEmpty()){
-			if(elapsedTime >= noteGenerater.getLateNote()-4.4f){
+			if(elapsedTime >= noteGenerater.getLateNote()-4.5f){
 				noteGenerater.removeNote(0);
 				addNote(new Vector2(740, 392));
 			}
