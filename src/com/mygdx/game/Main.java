@@ -9,7 +9,7 @@ public class Main {
             new LibGdxsample(),
             "Game",
             800,
-            480
+            600
         );
 	}
 }
