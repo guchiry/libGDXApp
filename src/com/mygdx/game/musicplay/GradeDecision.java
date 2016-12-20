@@ -67,6 +67,10 @@ public class GradeDecision {
 		return missNum;
 	}
 
+	public int getComboNum(){
+		return combo;
+	}
+
 	public void increaseComboNum(){
 		this.combo++;
 	}
