@@ -1,7 +1,8 @@
-package com.mygdx.game;
+package com.mygdx.game.musicplay;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.mygdx.game.musicplay.GradeDecision.Grade;
 
 public class Controller {
 	private Score score;

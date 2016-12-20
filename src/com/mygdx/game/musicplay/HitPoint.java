@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.musicplay;
 
 public class HitPoint {
 	protected int hp;

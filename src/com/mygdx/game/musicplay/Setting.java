@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.musicplay;
 
 public class Setting {
 	public static final float LOGICAL_WIDTH = 800;

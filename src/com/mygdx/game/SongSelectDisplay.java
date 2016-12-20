@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.game.musicplay.Setting;
 
 public class SongSelectDisplay extends MyScreenAdapter {
 	private static final String LOG_TAG = SongSelectDisplay.class.getSimpleName();
