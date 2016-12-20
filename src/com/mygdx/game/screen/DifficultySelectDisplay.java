@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -36,6 +37,9 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
     Texture img5;
     Texture img6;
     Texture img7;
+    TextureRegion[] front1;
+    TextureRegion[] front2;
+    TextureRegion[] front3;
     private OrthographicCamera cam;
 	private Viewport viewport;
 
@@ -44,16 +48,19 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
 
     public DifficultySelectDisplay(LibGdxsample game) {
         super(game);
-        img1 = new Texture("res/hidari.png");
-        img2 = new Texture("res/mae.png");
-        img3 = new Texture("res/migi.png");
-        img4 = new Texture("res/usiro.png");
+        img1 = new Texture("res/kaede2.png");
+        img2 = new Texture("res/sinon2.png");
+        img3 = new Texture("res/visyunu2.png");
+        img4 = new Texture("res/Goblin.png");
         img5 = new Texture("res/easy10.png");
         img6 = new Texture("res/normal.png");
         img7 = new Texture("res/hard.png");
         batch = new SpriteBatch();
         font = new BitmapFont();
         renderer = new ShapeRenderer();
+        front1 = new TextureRegion(img1).split(16, 16)[0];
+        front2 = new TextureRegion(img2).split(16, 16)[0];
+        front3 = new TextureRegion(img3).split(16, 16)[0];
 	}
 
     @Override
@@ -73,10 +80,10 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
     public void render (float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(img1, 220, 300);
-        batch.draw(img2, 320, 300);
-        batch.draw(img3, 420, 300);
-        batch.draw(img4, 520, 300);
+        batch.draw(front1[1], 220, 300, 64, 64);
+        batch.draw(front2[1], 320, 300, 64, 64);
+        batch.draw(front3[1], 420, 300, 64, 64);
+        batch.draw(img4, 520, 300, 64, 64);
         batch.draw(img5, 300, 210);
         batch.draw(img6, 300, 150);
         batch.draw(img7, 300, 90);
