@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -69,18 +68,6 @@ public class Title extends MyScreenAdapter {
         renderer.rect(300, 150, 200,50);
 
         renderer.end();
-
-        //ここからフェードインのテスト
-        Gdx.gl.glEnable(GL20.GL_BLEND);
-        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-        renderer.begin(ShapeType.Filled);
-        if(time<=2){
-        	renderer.setColor(0, 0, 0, time/2);
-        }
-        renderer.rect(0, 0, 800,480);
-        renderer.end();
-        Gdx.gl.glDisable(GL20.GL_BLEND);
-        //テストおわり
 
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
