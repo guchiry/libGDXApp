@@ -7,7 +7,7 @@ public class NoteDisplay {
 	private NoteGenerater noteGenerater;
 
 	private Array<Note> dispNotesList = new Array<Note>();
-	private int elapsedFrame = 0;
+	private float elapsedTime = 0;
 
 	public NoteDisplay(){
 		noteGenerater = new NoteGenerater();
@@ -24,10 +24,10 @@ public class NoteDisplay {
 		}
 	}
 
-	public void createNote(){
-		elapsedFrame++;
+	public void createNote(float delta){
+		elapsedTime += delta;
 		if(!noteGenerater.isEmpty()){
-			if(elapsedFrame >= noteGenerater.getLateNote()){
+			if(elapsedTime >= noteGenerater.getLateNote()-4.4f){
 				noteGenerater.removeNote(0);
 				addNote(new Vector2(740, 392));
 			}
@@ -58,5 +58,9 @@ public class NoteDisplay {
 		}else{
 			return false;
 		}
+	}
+
+	public float getElapsedTime() {
+		return elapsedTime;
 	}
 }

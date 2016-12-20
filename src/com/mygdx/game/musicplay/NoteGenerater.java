@@ -3,18 +3,18 @@ package com.mygdx.game.musicplay;
 import com.badlogic.gdx.utils.Array;
 
 public class NoteGenerater {
-	private Array<Integer> score = new Array<Integer>();
+	private Array<Float> score = new Array<Float>();
 
 	public NoteGenerater(){
 		ScoreHolder scoreHolder = new ScoreHolder(0);
 		score = scoreHolder.getScore();
 	}
 
-	public Array<Integer> getScore(){
+	public Array<Float> getScore(){
 		return score;
 	}
 
-	public int getLateNote(){
+	public Float getLateNote(){
 		return score.first();
 	}
 

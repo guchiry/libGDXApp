@@ -43,9 +43,8 @@ public class GameScreen extends MyScreenAdapter{
 	public void render(float delta) {
 		if(state == MusicState.BEFORE_THE_START)
 			startMusicTime += delta;
-		if(startMusicTime > 3f){
+		if(startMusicTime > 3f && state == MusicState.BEFORE_THE_START)
 			state = MusicState.START;
-		}
 		if(state == MusicState.START){
 			state = MusicState.PLAY;
 			music.setLooping(false);

@@ -2,7 +2,6 @@ package com.mygdx.game.musicplay;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.mygdx.game.musicplay.GradeDecision.Grade;
 
 public class Controller {
 	private Score score;
@@ -16,9 +15,11 @@ public class Controller {
 
 	public void touched(){
 		if(Gdx.input.justTouched()) touchFlag = true;
+		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) touchFlag = true;
 
 		if(touchFlag){
 			touchFlag = false;
+			System.out.print(score.getNoteDisp().getElapsedTime() + "f,");
 			score.sound.play();
 			score.getDecision().evaluate();
 			if(score.getDecision().getGrade() == GradeDecision.Grade.MISS){

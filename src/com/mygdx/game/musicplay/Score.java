@@ -30,7 +30,7 @@ public class Score {
 	public void update(float delta){
 		touchTime += delta;
 
-		noteDisp.createNote();
+		noteDisp.createNote(delta);
 
 		//エフェクトの追加　UIの調整　各種スクリーンとの連結部分
 
