@@ -1,9 +1,6 @@
-package com.mygdx.game;
+package com.mygdx.game.animation;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.mygdx.game.Hero;
-import com.mygdx.game.Hero.Direction;
-import com.mygdx.game.World;
+import com.mygdx.game.animation.Hero.Direction;
 
 public class WorldController {
 	private World world;

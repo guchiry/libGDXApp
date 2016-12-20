@@ -52,7 +52,7 @@ public class GameScreen extends MyScreenAdapter{
 		    pauseBounds.set(762, 442, 32, 32);
 		    if (pauseBounds.contains(touchPoint.x, touchPoint.y)) {
 		        pause();
-		        //System.out.println("aaaa");
+		        System.out.println("PauseButtooooooooon!!!");
 		    }
 		}
 	}

@@ -1,6 +1,8 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.mygdx.game.animation.World;
+import com.mygdx.game.animation.WorldRenderer;
 
 public class DisplayRenderer {
 	private World world;

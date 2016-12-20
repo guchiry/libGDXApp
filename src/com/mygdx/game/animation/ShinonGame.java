@@ -1,14 +1,14 @@
-package com.mygdx.game;
+package com.mygdx.game.animation;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
-public class VisnuReal extends Hero{
+public class ShinonGame extends Hero{
 
-	public VisnuReal(Vector2 position){
+	public ShinonGame(Vector2 position){
 		super(position);
-		img = new Texture(Gdx.files.internal("res/visyunu.png"));
+		img = new Texture(Gdx.files.internal("res/sinon2.png"));
 		initImg();
 		setSprite();
 	}

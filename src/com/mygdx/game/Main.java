@@ -9,9 +9,7 @@ public class Main {
             new LibGdxsample(),
             "Game",
             800,
-            600
-            //kimiya
+            480
         );
 	}
-//akb
 }
