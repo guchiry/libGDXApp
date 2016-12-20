@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.play;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
 import com.mygdx.game.screen.MyScreenAdapter;
 

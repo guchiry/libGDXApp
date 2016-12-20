@@ -1,4 +1,4 @@
-package com.mygdx.game;
+package com.mygdx.game.play;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.mygdx.game.animation.World;
