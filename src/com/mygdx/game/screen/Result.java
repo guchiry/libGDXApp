@@ -1,10 +1,10 @@
 package com.mygdx.game.screen;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -12,29 +12,46 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+
 
 public class Result extends MyScreenAdapter {
 	private static final String LOG_TAG = Result.class.getSimpleName();
     SpriteBatch batch;
-    Texture img;
+    Texture img1;
+    Texture img2;
+    Texture img3;
+    Texture img4;
+    Texture img5;
+    Texture img6;
+    Texture img7;
+    Texture img8;
+    Texture img9;
     BitmapFont font;
-    ShapeRenderer renderer;
-	int time;
+    ShapeRenderer debugRenderer;
+	int i;
 	private OrthographicCamera cam;
 	private Viewport viewport;
-
+	
     public Result(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
         font = new BitmapFont();
-        renderer = new ShapeRenderer();
-	}
-
+        debugRenderer = new ShapeRenderer();
+        img1 = new Texture("res/perfect.png");
+        img2 = new Texture("res/great1.png");
+        img3 = new Texture("res/good2.png");
+        img4 = new Texture("res/miss1.png");
+        img5 = new Texture("res/totalpoint.png");
+        img6 = new Texture("res/startbutton4.png");
+        img7 = new Texture("res/gameover.png");
+        img8 = new Texture("res/title.png");
+        img9 = new Texture("res/exit.png");
+		}
     @Override
     public void resize(int width, int height) {
 		viewport.update(width, height);
 	}
-
     @Override
     public void show () {
     	Gdx.app.log(LOG_TAG, "show");
@@ -46,55 +63,28 @@ public class Result extends MyScreenAdapter {
 
     @Override
     public void render (float delta) {
-    	time++;
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        renderer.begin(ShapeRenderer.ShapeType.Line);
-        renderer.rect(100, 350, 400,50);
-        renderer.rect(550, 350, 150,50);
-        renderer.rect(50, 250, 160,40);
-        renderer.rect(230, 250, 160,40);
-        renderer.rect(410, 250, 160,40);
-        renderer.rect(590, 250, 160,40);
-        renderer.rect(200, 90, 400,80);
-        renderer.rect(400, 430, 150,40);
-        renderer.rect(600, 430, 150,40);
-        renderer.end();
-
-        batch.begin();
-        font.getData().setScale(1f);
-        font.draw(batch, "title", 460, 450);
-        font.draw(batch, "exit", 670, 450);
-        font.draw(batch, "kyokumei", 150, 375);
-        font.draw(batch, "nanido", 600, 375);
-        font.draw(batch, "perfect           /100", 80, 270);
-        if(time>100){
-        	font.draw(batch, "a", 160, 270);
+    	i++;
+    	
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
+        
+        debugRenderer.end();
+        batch.begin(); // 描画の開始
+        batch.draw(img1, 30, 350);
+        batch.draw(img2, 30, 300);
+        batch.draw(img3, 30, 250);
+        batch.draw(img4, 30, 200);
+        batch.draw(img5, 300, 200);
+        batch.draw(img6, 10, 450);
+        if(i>200){
+        	batch.draw(img7, 650, 200);
         }
-
-        font.draw(batch, "great             /100", 265, 270);
-        if(time>150){
-       	font.draw(batch, "b", 340, 270);
+        
+        if(i>250){
+        	batch.draw(img8, 500, 100);
+        	batch.draw(img9, 650, 100);
         }
-       	font.draw(batch, "good              /100", 450, 270);
-       	if(time>200){
-       	font.draw(batch, "c", 530, 270);
-       	}
-       	font.draw(batch, "fault              /100", 625, 270);
-       	if(time>250){
-       	font.draw(batch, "d", 700, 270);
-       	}
-       	font.draw(batch, "Total points", 260, 115);
-       	font.getData().setScale(3f);
-       	if(time>350){
-       	font.draw(batch, "XXXX", 400, 135);
-       	}
-       	font.getData().setScale(2f);
-        if(time>410){
-       	font.draw(batch, "clear", 650, 135);
-        }
-        batch.end();
-
+        
+        batch.end(); // 描画の終了
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
@@ -108,7 +98,7 @@ public class Result extends MyScreenAdapter {
 		    if(600<touchPoint.x && touchPoint.x<750){
 				if(380>touchPoint.y && 340<touchPoint.y){
 					Gdx.app.exit();
-				}
+					}
 			}
         }
     }
@@ -120,8 +110,8 @@ public class Result extends MyScreenAdapter {
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "hide");
-    	 font.dispose();
-    	 batch.dispose();
-    	 renderer.dispose();
+    font.dispose();
+    batch.dispose();
+    debugRenderer.dispose();
     }
 }
