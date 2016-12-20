@@ -37,8 +37,8 @@ public class WorldController {
 		feelingControll(6,7,FeelType.B,0);//！
 		jumpControll(6,0);
 		moveControll(7,8,Direction.LEFT,1);
-		feelingControll(8,10,FeelType.C,0);//ゲーム*1
-		feelingControll(8,10,FeelType.D,1);//ゲーム*1
+		feelingControll(8,13,FeelType.C,0);//ゲーム*1
+		feelingControll(8,13,FeelType.D,1);//ゲーム*1
 		rotateControll(10,11,Direction.FRONT,0);
 		rotateControll(10,11,Direction.FRONT,1);
 		fadeInControll(11,13,delta,1);
@@ -48,6 +48,14 @@ public class WorldController {
 			world.getDispHeroList().add(new ShinonGame(new Vector2(400, 150)));
 		}
 		fadeOutControll(13,15,delta,2);
+		rotateControll(15,16,Direction.RIGHT,0);
+		rotateControll(15,16,Direction.LEFT,1);
+		feelingControll(16,19,FeelType.B,1);//敵
+		feelingControll(17,19,FeelType.B,0);//〇
+		jumpControll(17,0);
+		moveControll(21,25,Direction.RIGHT,0);
+		moveControll(21,25,Direction.RIGHT,1);
+		fadeInControll(23,25,delta,1);
 
 //		tackleControll(13,Direction.RIGHT,1);
 //		System.out.println(time);
@@ -94,8 +102,7 @@ public class WorldController {
 	public void feelingControll(float startTime ,float endTime,FeelType feelType, int listNumber){
 		Hero hero = world.getDispHeroList().get(listNumber);
 		if(time >= startTime && endTime > time){
-			hero.setState(hero.state.FEELING);
-			hero.getFeeling();
+		hero.setFeelingFlag(hero.feelingFlag.ON);
 			hero.setFeelType(feelType);
 		}
 	}

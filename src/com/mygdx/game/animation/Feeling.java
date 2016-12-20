@@ -38,4 +38,8 @@ public class Feeling {
 		if(hero.feelType == Hero.FeelType.D) return feelIconD;
 		return null;
 	}
+	public void setPosition(Vector2 position){
+		this.position = position;
+	}
+
 }

@@ -10,13 +10,16 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Hero {
 	public enum State{
-		IDLE, WALKING,FEELING,JUMP,TACKLE
+		IDLE, WALKING,JUMP,TACKLE
 	}
 	public enum Direction{
-		FRONT, LEFT, RIGHT, BACK,
+		FRONT, LEFT, RIGHT, BACK
 	}
 	public enum FeelType{
-		A, B, C, D, E,
+		A, B, C, D, E
+	}
+	public enum FeelingFlag{
+		ON,OFF
 	}
 
 
@@ -33,6 +36,7 @@ public class Hero {
 	TextureRegion[] back;
 	State state = State.IDLE;
 	Direction dir = Direction.FRONT;
+	FeelingFlag feelingFlag = FeelingFlag.OFF;
 	FeelType feelType = FeelType.A;
 
 	Sprite sprite;
@@ -85,6 +89,10 @@ public class Hero {
 	public State getState() {
 		return state;
 	}
+
+	public FeelingFlag getFeelingFlag() {
+		return feelingFlag;
+	}
 	public FeelType getFeelType() {
 		return feelType;
 	}
@@ -102,6 +110,10 @@ public class Hero {
 
 	public void setDirection(Direction dir){
 		this.dir = dir;
+	}
+
+	public void setFeelingFlag(FeelingFlag flag) {
+		this.feelingFlag = flag;
 	}
 
 	public void setFeelType(FeelType feelType) {
