@@ -69,7 +69,7 @@ public class WorldRenderer {
 			heroSprite = hero.currentAnim().getKeyFrame(stateTime,loop);
 		}
 		if(hero.getState().equals(Hero.State.FEELING)){
-			Texture feelingIcon = feeling.getFeeling();
+			Texture feelingIcon = feeling.getFeelIcon();
 			batch.draw(feelingIcon,x1,y1+64,64,64);
 		}
 		batch.draw(heroSprite,x1,y1,64,64);

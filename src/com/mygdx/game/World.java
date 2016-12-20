@@ -24,11 +24,8 @@ public class World {
 	}
 
 	public void createDemoWorld(){
-		dispHeroList.add(new KaedeReal(new Vector2(240, 100)));
-		dispHeroList.add(new ShinonReal(new Vector2(300,400)));
-		dispHeroList.add(new KaedeGame(new Vector2(360,400)));
-		dispHeroList.add(new ShinonGame(new Vector2(420,400)));
-		dispHeroList.add(new VisnuGame(new Vector2(480,400)));
+		dispHeroList.add(new KaedeReal(new Vector2(310, 150)));
+		dispHeroList.add(new ShinonReal(new Vector2(440,150)));
 
 		shapeRenderer = new ShapeRenderer();
 	}
