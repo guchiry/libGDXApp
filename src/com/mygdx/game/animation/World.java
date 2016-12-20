@@ -2,6 +2,8 @@ package com.mygdx.game.animation;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.mygdx.game.animation.Hero.Direction;
+import com.mygdx.game.animation.Hero.State;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -24,11 +26,8 @@ public class World {
 	}
 
 	public void createDemoWorld(){
-		dispHeroList.add(new KaedeReal(new Vector2(240, 100)));
-		dispHeroList.add(new ShinonReal(new Vector2(300,400)));
-		dispHeroList.add(new KaedeGame(new Vector2(360,400)));
-		dispHeroList.add(new ShinonGame(new Vector2(420,400)));
-		dispHeroList.add(new VisnuGame(new Vector2(480,400)));
+		dispHeroList.add(new KaedeReal(new Vector2(310, 150)));
+		dispHeroList.add(new ShinonReal(new Vector2(440,150)));
 
 		shapeRenderer = new ShapeRenderer();
 	}

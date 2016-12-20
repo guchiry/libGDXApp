@@ -15,6 +15,10 @@ public class Hero {
 	public enum Direction{
 		FRONT, LEFT, RIGHT, BACK,
 	}
+	public enum FeelType{
+		A, B, C, D, E,
+	}
+
 
 	static final float SPEED = 1f;
 	static final float SIZE = 1f;
@@ -29,6 +33,8 @@ public class Hero {
 	TextureRegion[] back;
 	State state = State.IDLE;
 	Direction dir = Direction.FRONT;
+	FeelType feelType = FeelType.A;
+
 	Sprite sprite;
 
 	Hero hero;
@@ -45,7 +51,7 @@ public class Hero {
 		this.position = position;
 		this.bounds.x = SIZE;
 		this.bounds.y = SIZE;
-		feel = new Feeling(new Vector2(position));
+		feel = new Feeling(new Vector2(position),this);
 		sprite = new Sprite();
 	}
 
@@ -79,6 +85,9 @@ public class Hero {
 	public State getState() {
 		return state;
 	}
+	public FeelType getFeelType() {
+		return feelType;
+	}
 
 	public void setSprite(){
 		if(dir == Hero.Direction.FRONT) sprite = new Sprite(front[1]);
@@ -93,6 +102,10 @@ public class Hero {
 
 	public void setDirection(Direction dir){
 		this.dir = dir;
+	}
+
+	public void setFeelType(FeelType feelType) {
+		this.feelType = feelType;
 	}
 
 	public void setPosition(Vector2 position){
