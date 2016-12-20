@@ -1,7 +1,8 @@
-package com.mygdx.game;
+package com.mygdx.game.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.mygdx.game.LibGdxsample;
 
 public abstract class MyScreenAdapter implements Screen {
     private static final String LOG_TAG = MyScreenAdapter.class.getSimpleName();

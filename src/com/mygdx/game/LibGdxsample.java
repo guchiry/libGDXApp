@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.mygdx.game.screen.Title;
 
 public class LibGdxsample extends Game {
     public static final String LOG_TAG = LibGdxsample.class.getSimpleName();

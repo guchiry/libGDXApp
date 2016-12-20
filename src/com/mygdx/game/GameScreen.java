@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.musicplay.Setting;
+import com.mygdx.game.screen.MyScreenAdapter;
 
 public class GameScreen extends MyScreenAdapter{
 	private OrthographicCamera cam;
