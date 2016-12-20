@@ -31,10 +31,10 @@ public class Chara extends MyScreenAdapter {
 	public Chara(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
-        img1 = new Texture("res/startbutton3.png");
-        img2 = new Texture("res/mae.png");
-        img3 = new Texture("res/migi.png");
-        img4 = new Texture("res/usiro.png");
+        img1 = new Texture("res/startbutton4.png");
+        img2 = new Texture("res/startbutton4.png");
+        img3 = new Texture("res/startbutton4.png");
+        img4 = new Texture("res/startbutton4.png");
         font = new BitmapFont();
         debugRenderer = new ShapeRenderer();
     
@@ -59,21 +59,21 @@ public class Chara extends MyScreenAdapter {
     	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
         batch.begin(); // 描画の開始
         batch.draw(img1, 10, 450);
-        batch.draw(img2, 50, 280);
-        batch.draw(img3, 450, 80);
-        batch.draw(img4, 450, 280);// テクスチャーを描画
+        batch.draw(img2, 10, 320);
+        batch.draw(img3, 10, 190);
+        batch.draw(img4, 10, 60);// テクスチャーを描画
         //font.setColor(Color.RED);
         font.getData().setScale(1f); 
-        font.draw(batch, "kyokumei", 130, 110); 
+        /*font.draw(batch, "kyokumei", 130, 110); 
         font.draw(batch, "kyokumei", 130, 310); 
         font.draw(batch, "kyokumei", 530, 110); 
         font.draw(batch, "kyokumei", 530, 310); 
-        batch.end(); // 描画の終了
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
         debugRenderer.rect(120, 90, 270,30);
         debugRenderer.rect(120, 290, 270,30);
         debugRenderer.rect(520, 90, 270,30);
         debugRenderer.rect(520, 290, 270,30);
+        */batch.end(); // 描画の終了
         debugRenderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();

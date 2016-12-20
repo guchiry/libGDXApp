@@ -19,7 +19,8 @@ import com.badlogic.gdx.graphics.Color;
 public class Title extends MyScreenAdapter {
 	private static final String LOG_TAG = Title.class.getSimpleName();
     SpriteBatch batch;
-    Texture img;
+    Texture img1;
+    Texture img2;
     BitmapFont font;
     ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
@@ -30,7 +31,8 @@ public class Title extends MyScreenAdapter {
         batch = new SpriteBatch();
         font = new BitmapFont();
         debugRenderer = new ShapeRenderer();
-        
+        img1 = new Texture("res/start.png");
+        img2 = new Texture("res/exit.png");
 		}
     @Override
     public void resize(int width, int height) {
@@ -56,14 +58,16 @@ public class Title extends MyScreenAdapter {
         batch.begin(); // 描画の開始
         font.getData().setScale(3f); 
         font.draw(batch, "kimiyasu", 280, 410);
+        batch.draw(img1, 330, 150);
+        batch.draw(img2, 330, 100);
         font.getData().setScale(1f); 
-        font.draw(batch, "Game start", 365, 175);
-        font.draw(batch, "Exit", 390, 115);
+        //font.draw(batch, "Game start", 365, 175);
+        //font.draw(batch, "Exit", 390, 115);
         batch.end(); // 描画の終了
         debugRenderer.begin(ShapeRenderer.ShapeType.Line);
         debugRenderer.rect(150, 350, 500,100);
-        debugRenderer.rect(300, 150, 200,50);
-        debugRenderer.rect(300, 90, 200,50);
+        //debugRenderer.rect(300, 150, 200,50);
+        //debugRenderer.rect(300, 90, 200,50);
         
         debugRenderer.end();
         if (Gdx.input.justTouched()) {

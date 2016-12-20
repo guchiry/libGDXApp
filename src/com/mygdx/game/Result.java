@@ -18,7 +18,11 @@ import com.badlogic.gdx.graphics.Color;
 public class Result extends MyScreenAdapter {
 	private static final String LOG_TAG = Result.class.getSimpleName();
     SpriteBatch batch;
-    Texture img;
+    Texture img1;
+    Texture img2;
+    Texture img3;
+    Texture img4;
+    Texture img5;
     BitmapFont font;
     ShapeRenderer debugRenderer;
 	int i;
@@ -30,6 +34,11 @@ public class Result extends MyScreenAdapter {
         batch = new SpriteBatch();
         font = new BitmapFont();
         debugRenderer = new ShapeRenderer();
+        img1 = new Texture("res/perfect.png");
+        img2 = new Texture("res/great1.png");
+        img3 = new Texture("res/good2.png");
+        img4 = new Texture("res/miss1.png");
+        img5 = new Texture("res/totalpoint.png");
 		}
     @Override
     public void resize(int width, int height) {
@@ -50,7 +59,7 @@ public class Result extends MyScreenAdapter {
     	//Gdx.app.log(LOG_TAG, "render");
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
         
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
+        /*debugRenderer.begin(ShapeRenderer.ShapeType.Line);
         debugRenderer.rect(100, 350, 400,50);
         debugRenderer.rect(550, 350, 150,50);
         debugRenderer.rect(50, 250, 160,40);
@@ -61,9 +70,14 @@ public class Result extends MyScreenAdapter {
         debugRenderer.rect(400, 430, 150,40);
         debugRenderer.rect(600, 430, 150,40);
         
-        debugRenderer.end();
+        */debugRenderer.end();
         batch.begin(); // 描画の開始
-        font.getData().setScale(1f); 
+        batch.draw(img1, 30, 200);
+        batch.draw(img2, 30, 150);
+        batch.draw(img3, 30, 100);
+        batch.draw(img4, 30, 50);
+        batch.draw(img5, 300, 50);
+        /*font.getData().setScale(1f); 
         font.draw(batch, "title", 460, 450);
         font.draw(batch, "exit", 670, 450);
         font.draw(batch, "kyokumei", 150, 375);
@@ -95,7 +109,7 @@ public class Result extends MyScreenAdapter {
         if(i>410){
        	font.draw(batch, "clear", 650, 135);
         }
-        batch.end(); // 描画の終了
+        */batch.end(); // 描画の終了
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
