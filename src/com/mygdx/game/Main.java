@@ -10,8 +10,6 @@ public class Main {
             "Game",
             800,
             600
-            //kimiya
         );
 	}
-//akb
 }

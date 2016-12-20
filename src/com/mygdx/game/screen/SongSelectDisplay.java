@@ -1,46 +1,41 @@
-package com.mygdx.game;
+package com.mygdx.game.screen;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
-import com.mygdx.game.screen.MyScreenAdapter;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.Color;
 
-public class Chara extends MyScreenAdapter {
-	private static final String LOG_TAG = Chara.class.getSimpleName();
+public class SongSelectDisplay extends MyScreenAdapter {
+	private static final String LOG_TAG = SongSelectDisplay.class.getSimpleName();
 	SpriteBatch batch;
     Texture img1;
     Texture img2;
     Texture img3;
     Texture img4;
     BitmapFont font;
-    ShapeRenderer debugRenderer;
+    ShapeRenderer renderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
-	
-	public Chara(LibGdxsample game) {
+
+	public SongSelectDisplay(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
-        img1 = new Texture("res/startbutton4.png");
-        img2 = new Texture("res/startbutton4.png");
-        img3 = new Texture("res/startbutton4.png");
-        img4 = new Texture("res/startbutton4.png");
+        img1 = new Texture("res/hidari.png");
+        img2 = new Texture("res/mae.png");
+        img3 = new Texture("res/migi.png");
+        img4 = new Texture("res/usiro.png");
         font = new BitmapFont();
-        debugRenderer = new ShapeRenderer();
-    
+        renderer = new ShapeRenderer();
 	}
+
     @Override
     public void resize(int width, int height) {
 		viewport.update(width, height);
@@ -57,26 +52,25 @@ public class Chara extends MyScreenAdapter {
 
     @Override
     public void render (float delta) {
-    	//Gdx.app.log(LOG_TAG, "render");
-    	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
-        batch.begin(); // 描画の開始
-        batch.draw(img1, 10, 450);
-        batch.draw(img2, 10, 320);
-        batch.draw(img3, 10, 190);
-        batch.draw(img4, 10, 60);// テクスチャーを描画
-        //font.setColor(Color.RED);
-        font.getData().setScale(1f); 
-        /*font.draw(batch, "kyokumei", 130, 110); 
-        font.draw(batch, "kyokumei", 130, 310); 
-        font.draw(batch, "kyokumei", 530, 110); 
-        font.draw(batch, "kyokumei", 530, 310); 
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        debugRenderer.rect(120, 90, 270,30);
-        debugRenderer.rect(120, 290, 270,30);
-        debugRenderer.rect(520, 90, 270,30);
-        debugRenderer.rect(520, 290, 270,30);
-        */batch.end(); // 描画の終了
-        debugRenderer.end();
+    	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.begin();
+        batch.draw(img1, 50, 80);
+        batch.draw(img2, 50, 280);
+        batch.draw(img3, 450, 80);
+        batch.draw(img4, 450, 280);
+
+        font.getData().setScale(1f);
+        font.draw(batch, "kyokumei", 130, 110);
+        font.draw(batch, "kyokumei", 130, 310);
+        font.draw(batch, "kyokumei", 530, 110);
+        font.draw(batch, "kyokumei", 530, 310);
+        batch.end();
+        renderer.begin(ShapeRenderer.ShapeType.Line);
+        renderer.rect(120, 90, 270,30);
+        renderer.rect(120, 290, 270,30);
+        renderer.rect(520, 90, 270,30);
+        renderer.rect(520, 290, 270,30);
+        renderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
@@ -84,8 +78,7 @@ public class Chara extends MyScreenAdapter {
 		    viewport.unproject(touchPoint.set(x, y, 0));
 			if(120<touchPoint.x && touchPoint.x<390){
 				if(90>touchPoint.y && 60<touchPoint.y){
-					game.setScreen(new Nanido(game));
-					//game.setScreen(new Chara(game));
+					game.setScreen(new DifficultySelectDisplay(game));
 				}
 			}
 			if(120<touchPoint.x && touchPoint.x<390){
@@ -104,8 +97,9 @@ public class Chara extends MyScreenAdapter {
 				}
 			}
 		}
-        
+
     }
+
     @Override
     public void hide() {
         Gdx.app.log(LOG_TAG, "hide");
@@ -114,9 +108,9 @@ public class Chara extends MyScreenAdapter {
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "hide");
-    font.dispose();
-    batch.dispose();
-    debugRenderer.dispose();
+    	 font.dispose();
+    	 batch.dispose();
+    	 renderer.dispose();
     }
 
 }
