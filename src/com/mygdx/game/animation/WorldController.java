@@ -87,11 +87,12 @@ public class WorldController {
 		fadeInControll(37,39,delta,7);
 		if(time >= 39 && 41 > time){
 			world.getDispHeroList().clear();
-			world.getDispHeroList().add(new KaedeGame(new Vector2(360, 240)));
-			world.getDispHeroList().add(new VisnuGame(new Vector2(360, 10)));
-			world.getDispHeroList().add(new ShinonGame(new Vector2(360, 120)));
+			world.getDispHeroList().add(new KaedeGame(new Vector2(440, 50)));
+			world.getDispHeroList().add(new VisnuGame(new Vector2(310, 50)));
+			world.getDispHeroList().add(new ShinonGame(new Vector2(310, 200)));
 		}
 
+		rotateControll(39,41,Direction.BACK,0);
 		rotateControll(39,41,Direction.BACK,1);
 		//カエデ、ヴィシュヌ、シノン、ゲーム内戦闘
 		fadeOutControll(39,41,delta,8);
@@ -105,13 +106,14 @@ public class WorldController {
 		feelingControll(50,52,FeelType.CRY,1);//泣き
 		jumpControll(50,1);
 		feelingControll(52,54,FeelType.SILENCE,2);//無言
-		if(time >= 54 && 57 > time){
-			world.getDispHeroList().clear();
-			world.getDispHeroList().add(new KaedeGame(new Vector2(360, 240)));
-			world.getDispHeroList().add(new VisnuGame(new Vector2(360, 10)));
-		}
-		rotateControll(54,57,Direction.BACK,1);
 		fadeInControll(55,57,delta,9);
+		if(time >= 56 && 57 > time){
+			world.getDispHeroList().clear();
+			world.getDispHeroList().add(new KaedeGame(new Vector2(440, 50)));
+			world.getDispHeroList().add(new VisnuGame(new Vector2(310, 50)));
+		}
+		rotateControll(56,57,Direction.BACK,0);
+		rotateControll(56,57,Direction.BACK,1);
 
 	}
 
