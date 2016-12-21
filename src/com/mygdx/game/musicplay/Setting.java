@@ -16,4 +16,8 @@ public class Setting {
 	public static final float PERFECT_DISTANCE = 5f;
 
 	public static final float BEFORE_PLAY_TIME = 3f;
+
+	public static final float SCORE_UI_WIDTH =740-(80+72);
+
+	public static final float ARRIVAL_TIME = SCORE_UI_WIDTH/NOTES_SPEED/60;
 }
