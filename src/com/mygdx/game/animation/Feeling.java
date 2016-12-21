@@ -10,21 +10,31 @@ public class Feeling {
 	public static final float SIZE = 1f;
 	Vector2 	position = new Vector2();
 	Hero hero;
-	Texture feelIconA;
-	Texture feelIconB;
-	Texture feelIconC;
-	Texture feelIconD;
-	Texture feelIconE;
+	Texture game2Icon;
+	Texture gameYIcon;
+	Texture gameBIcon;
+	Texture exclamateIcon;
+	Texture enemyIcon;
+	Texture okIcon;
+	Texture surpriseIcon;
+	Texture silenceIcon;
+	Texture cryIcon;
+	Texture damageIcon;
 
 	public Feeling(Vector2 pos, Hero hero) {
 		this.position = pos;
 		this.hero = hero;
 
-		feelIconA = new Texture(Gdx.files.internal("res/kaede2.png"));
-		feelIconB = new Texture(Gdx.files.internal("res/kaede5.png"));
-		feelIconC = new Texture(Gdx.files.internal("res/sinon.png"));
-		feelIconD = new Texture(Gdx.files.internal("res/sinon2.png"));
-		feelIconE = new Texture(Gdx.files.internal("res/visyunu.png"));
+		game2Icon = new Texture(Gdx.files.internal("res/controller2.png"));
+		gameYIcon = new Texture(Gdx.files.internal("res/controller.kaede.png"));
+		gameBIcon = new Texture(Gdx.files.internal("res/controller.sinon.png"));
+		exclamateIcon = new Texture(Gdx.files.internal("res/onpu.png"));
+		enemyIcon = new Texture(Gdx.files.internal("res/visyunu.png"));
+		okIcon = new Texture(Gdx.files.internal("res/maru.png"));
+		surpriseIcon = new Texture(Gdx.files.internal("res/odoroki.png"));
+		silenceIcon = new Texture(Gdx.files.internal("res/mugon.png"));
+		cryIcon = new Texture(Gdx.files.internal("res/namida.png"));
+		damageIcon = new Texture(Gdx.files.internal("res/damage.png"));
 
 	}
 	public Vector2 getPosition() {
@@ -32,10 +42,16 @@ public class Feeling {
 	}
 
 	public Texture getFeelIcon(){
-		if(hero.feelType == Hero.FeelType.A) return feelIconA;
-		if(hero.feelType == Hero.FeelType.B) return feelIconB;
-		if(hero.feelType == Hero.FeelType.C) return feelIconC;
-		if(hero.feelType == Hero.FeelType.D) return feelIconD;
+		if(hero.feelType == Hero.FeelType.GAME2) return game2Icon;
+		if(hero.feelType == Hero.FeelType.GAMEYELLOW) return gameYIcon;
+		if(hero.feelType == Hero.FeelType.GAMEBLUE) return gameBIcon;
+		if(hero.feelType == Hero.FeelType.EXCLAMATION) return exclamateIcon;
+		if(hero.feelType == Hero.FeelType.ENEMY) return enemyIcon;
+		if(hero.feelType == Hero.FeelType.OK) return okIcon;
+		if(hero.feelType == Hero.FeelType.SURPRISE) return surpriseIcon;
+		if(hero.feelType == Hero.FeelType.SILENCE) return silenceIcon;
+		if(hero.feelType == Hero.FeelType.CRY) return cryIcon;
+		if(hero.feelType == Hero.FeelType.DAMAGE) return damageIcon;
 		return null;
 	}
 	public void setPosition(Vector2 position){

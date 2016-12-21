@@ -16,7 +16,7 @@ public class Hero {
 		FRONT, LEFT, RIGHT, BACK
 	}
 	public enum FeelType{
-		A, B, C, D, E
+		GAME2, GAMEYELLOW, GAMEBLUE, EXCLAMATION, ENEMY, OK, SURPRISE, SILENCE, CRY ,DAMAGE
 	}
 	public enum FeelingFlag{
 		ON,OFF
@@ -37,7 +37,7 @@ public class Hero {
 	State state = State.IDLE;
 	Direction dir = Direction.FRONT;
 	FeelingFlag feelingFlag = FeelingFlag.OFF;
-	FeelType feelType = FeelType.A;
+	FeelType feelType;
 
 	Sprite sprite;
 
@@ -64,10 +64,10 @@ public class Hero {
 		left = new TextureRegion(img).split(16, 16)[1];
 		right = new TextureRegion(img).split(16, 16)[2];
 		back = new TextureRegion(img).split(16, 16)[3];
-		animFront = new Animation(0.2f, front[0], front[1], front[2], front[1]);
-		animLeft = new Animation(0.2f, left[0], left[1], left[2], left[1]);
-		animRight = new Animation(0.2f, right[0], right[1], right[2], right[1]);
-		animBack = new Animation(0.2f, back[0], back[1], back[2], back[1]);
+		animFront = new Animation(0.15f, front[0], front[1], front[2], front[1]);
+		animLeft = new Animation(0.15f, left[0], left[1], left[2], left[1]);
+		animRight = new Animation(0.15f, right[0], right[1], right[2], right[1]);
+		animBack = new Animation(0.15f, back[0], back[1], back[2], back[1]);
 	}
 
 	public Vector2 getPosition(){
