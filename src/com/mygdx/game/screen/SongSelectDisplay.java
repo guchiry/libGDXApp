@@ -27,11 +27,13 @@ public class SongSelectDisplay extends MyScreenAdapter {
 	public SongSelectDisplay(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
+
         img1 = new Texture("res/songselect.png");
         img2 = new Texture("res/songselect.png");
         img3 = new Texture("res/songselect.png");
-        img4 = new Texture("res/songselect.png");        debugRenderer = new ShapeRenderer();
-    
+        img4 = new Texture("res/songselect.png");       
+        debugRenderer = new ShapeRenderer();
+
 	}
     @Override
     public void resize(int width, int height) {
@@ -64,10 +66,9 @@ public class SongSelectDisplay extends MyScreenAdapter {
 		    float y = Gdx.input.getY();
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
-			if(120<touchPoint.x && touchPoint.x<390){
-				if(90>touchPoint.y && 60<touchPoint.y){
+			if(40<touchPoint.x && touchPoint.x<40+img1.getWidth()){
+				if(450<touchPoint.y && touchPoint.y<450+img1.getHeight()){
 					game.setScreen(new DifficultySelectDisplay(game));
-					
 				}
 			}
 			if(120<touchPoint.x && touchPoint.x<390){
@@ -86,10 +87,11 @@ public class SongSelectDisplay extends MyScreenAdapter {
 				}
 			}
 		}
-        
+
     }
     @Override
     public void hide() {
+    	Gdx.app.log(LOG_TAG, "hide");
         dispose();
     }
     @Override
