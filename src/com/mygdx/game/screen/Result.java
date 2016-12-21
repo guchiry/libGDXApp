@@ -32,7 +32,7 @@ public class Result extends MyScreenAdapter {
 	int i;
 	private OrthographicCamera cam;
 	private Viewport viewport;
-	
+
     public Result(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
@@ -64,10 +64,11 @@ public class Result extends MyScreenAdapter {
     @Override
     public void render (float delta) {
     	i++;
-    	
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
-        
-        debugRenderer.end();
+
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        this.cam.update();
+    	batch.setProjectionMatrix(cam.combined);
         batch.begin(); // 描画の開始
         batch.draw(img1, 30, 350);
         batch.draw(img2, 30, 300);

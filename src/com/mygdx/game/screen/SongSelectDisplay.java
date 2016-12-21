@@ -11,8 +11,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
-import com.mygdx.game.screen.MyScreenAdapter;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
 public class SongSelectDisplay extends MyScreenAdapter {
@@ -22,20 +20,17 @@ public class SongSelectDisplay extends MyScreenAdapter {
     Texture img2;
     Texture img3;
     Texture img4;
-    BitmapFont font;
     ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
-	
+
 	public SongSelectDisplay(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
         img1 = new Texture("res/songselect.png");
         img2 = new Texture("res/songselect.png");
         img3 = new Texture("res/songselect.png");
-        img4 = new Texture("res/songselect.png");
-        font = new BitmapFont();
-        debugRenderer = new ShapeRenderer();
+        img4 = new Texture("res/songselect.png");        debugRenderer = new ShapeRenderer();
     
 	}
     @Override
@@ -54,15 +49,15 @@ public class SongSelectDisplay extends MyScreenAdapter {
 
     @Override
     public void render (float delta) {
-    	//Gdx.app.log(LOG_TAG, "render");
-    	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
-        batch.begin(); // 描画の開始
+    	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    	this.cam.update();
+    	batch.setProjectionMatrix(cam.combined);
+        batch.begin();
         batch.draw(img1, 40, 450);
         batch.draw(img2, 40, 320);
         batch.draw(img3, 40, 190);
-        batch.draw(img4, 40, 60);// テクスチャーを描画
-        font.getData().setScale(1f); 
-        batch.end(); // 描画の終了
+        batch.draw(img4, 40, 60);
+        batch.end();
         debugRenderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
@@ -101,9 +96,8 @@ public class SongSelectDisplay extends MyScreenAdapter {
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "hide");
-    font.dispose();
-    batch.dispose();
-    debugRenderer.dispose();
+    	 batch.dispose();
+    	 debugRenderer.dispose();
     }
 
 }
