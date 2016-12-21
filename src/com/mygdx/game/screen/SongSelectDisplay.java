@@ -31,7 +31,7 @@ public class SongSelectDisplay extends MyScreenAdapter {
         batch = new SpriteBatch();
 
         img1 = new Texture("res/songselect.png");
-        img2 = new Texture("res/fatefulday.png");
+        img2 = new Texture("res/hearttales.png");
         img3 = new Texture("res/preciousperson.png");
         img4 = new Texture("res/secretthings.png");
         img5 = new Texture("res/dailyworks1.png");
