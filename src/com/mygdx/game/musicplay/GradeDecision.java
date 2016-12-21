@@ -105,5 +105,6 @@ public class GradeDecision {
 		GradeNum.miss = missNum;
 		GradeNum.combo = combo;
 		GradeNum.score = goodNum*50 + greatNum*100 + perfectNum*200;
+		GradeNum.playTime = 0;
 	}
 }
