@@ -18,8 +18,6 @@ public class Sequence {
 
 		while( i < numList.size() ){
 			int n = numList.get(i);
-			System.out.println(n);
-
 			TextureRegion img = numImg.getTexture(n);
 			batch.draw(img, x + i * (img.getRegionWidth()+4), y);
 			i++;
