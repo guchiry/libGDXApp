@@ -18,21 +18,20 @@ import com.mygdx.game.play.GameScreen;
 public class Title extends MyScreenAdapter {
 	private static final String LOG_TAG = Title.class.getSimpleName();
     SpriteBatch batch;
-    Texture img;
+    Texture img1;
+    Texture img2;
     BitmapFont font;
-    ShapeRenderer renderer;
+    ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
-
-
-	float time=0;
 
     public Title(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
         font = new BitmapFont();
-        renderer = new ShapeRenderer();
-
+        debugRenderer = new ShapeRenderer();
+        img1 = new Texture("res/start.png");
+        img2 = new Texture("res/exit.png");
 		}
     @Override
     public void resize(int width, int height) {
@@ -45,42 +44,38 @@ public class Title extends MyScreenAdapter {
     	this.cam = new OrthographicCamera(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT);
 		this.cam.position.set(Setting.LOGICAL_WIDTH/2, Setting.LOGICAL_HEIGHT/2, 0);
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
+
     }
 
     @Override
     public void render (float delta) {
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
 			game.setScreen(new GameScreen(game));
         }
-        time += delta;
-
-        batch.begin();
+        batch.begin(); // 描画の開始
         font.getData().setScale(3f);
         font.draw(batch, "kimiyasu", 280, 410);
+        batch.draw(img1, 330, 150);
+        batch.draw(img2, 330, 100);
         font.getData().setScale(1f);
-        font.draw(batch, "Game start", 365, 175);
-        font.draw(batch, "Exit", 390, 115);
-        batch.end();
+        batch.end(); // 描画の終了
+        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
+        debugRenderer.rect(150, 350, 500,100);
 
-        renderer.begin(ShapeRenderer.ShapeType.Line);
-        renderer.rect(150, 350, 500,100);
-        renderer.rect(300, 150, 200,50);
-
-        renderer.end();
-
+        debugRenderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
-			if(300<touchPoint.x && touchPoint.x<500){
-				if(160>touchPoint.y && 115<touchPoint.y){
+			if(345<touchPoint.x && touchPoint.x<435){
+				if(150>touchPoint.y && 120<touchPoint.y){
 					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
-				if(110>touchPoint.y && 65<touchPoint.y){
+			if(360<touchPoint.x && touchPoint.x<430){
+				if(110>touchPoint.y && 83<touchPoint.y){
 					Gdx.app.exit();
 				}
 			}
@@ -95,9 +90,9 @@ public class Title extends MyScreenAdapter {
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "dispose");
-    	 font.dispose();
-    	 batch.dispose();
-    	 renderer.dispose();
+    font.dispose();
+    batch.dispose();
+    debugRenderer.dispose();
     }
 
 }

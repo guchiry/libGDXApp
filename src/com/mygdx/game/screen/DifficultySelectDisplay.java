@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -20,6 +21,12 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
     Texture img2;
     Texture img3;
     Texture img4;
+    Texture img5;
+    Texture img6;
+    Texture img7;
+    TextureRegion[] front1;
+    TextureRegion[] front2;
+    TextureRegion[] front3;
     private OrthographicCamera cam;
 	private Viewport viewport;
 
@@ -28,13 +35,19 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
 
     public DifficultySelectDisplay(LibGdxsample game) {
         super(game);
-        img1 = new Texture("res/hidari.png");
-        img2 = new Texture("res/mae.png");
-        img3 = new Texture("res/migi.png");
-        img4 = new Texture("res/usiro.png");
+        img1 = new Texture("res/kaede2.png");
+        img2 = new Texture("res/sinon2.png");
+        img3 = new Texture("res/visyunu2.png");
+        img4 = new Texture("res/Goblin.png");
+        img5 = new Texture("res/easy10.png");
+        img6 = new Texture("res/normal.png");
+        img7 = new Texture("res/hard.png");
         batch = new SpriteBatch();
         font = new BitmapFont();
         renderer = new ShapeRenderer();
+        front1 = new TextureRegion(img1).split(16, 16)[0];
+        front2 = new TextureRegion(img2).split(16, 16)[0];
+        front3 = new TextureRegion(img3).split(16, 16)[0];
 	}
 
     @Override
@@ -53,22 +66,22 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
     @Override
     public void render (float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        this.cam.update();
+    	batch.setProjectionMatrix(cam.combined);
         batch.begin();
-        batch.draw(img1, 220, 300);
-        batch.draw(img2, 320, 300);
-        batch.draw(img3, 420, 300);
-        batch.draw(img4, 520, 300);
-
-        font.getData().setScale(1f);
-        font.draw(batch, "easy", 380, 235);
-        font.draw(batch, "normal", 375, 175);
-        font.draw(batch, "hard", 380, 115);
+        batch.draw(front1[1], 220, 300, 64, 64);
+        batch.draw(front2[1], 320, 300, 64, 64);
+        batch.draw(front3[1], 420, 300, 64, 64);
+        batch.draw(img4, 520, 300, 64, 64);
+        batch.draw(img5, 335, 210);
+        batch.draw(img6, 335, 150);
+        batch.draw(img7, 335, 90);
         font.draw(batch, "back", 35, 565);
         batch.end();
+
+    	renderer.setProjectionMatrix(cam.combined);
         renderer.begin(ShapeRenderer.ShapeType.Line);
-        renderer.rect(300, 210, 200,50);
-        renderer.rect(300, 150, 200,50);
-        renderer.rect(300, 90, 200,50);
+
         renderer.rect(10, 540, 80,40);
 
         renderer.end();
@@ -83,20 +96,17 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
 					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
-				if(210>touchPoint.y && 165<touchPoint.y){
-					System.out.println("aaa");
+			if(360<touchPoint.x && touchPoint.x<435){
+				if(200>touchPoint.y && 170<touchPoint.y){
 					game.setScreen(new Result(game));
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
+			if(340<touchPoint.x && touchPoint.x<440){
 				if(160>touchPoint.y && 115<touchPoint.y){
-					System.out.println("bbb");
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
+			if(350<touchPoint.x && touchPoint.x<420){
 				if(110>touchPoint.y && 65<touchPoint.y){
-					System.out.println("ccc");
 				}
 			}
 		}

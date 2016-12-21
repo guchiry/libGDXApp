@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -13,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
 
+
 public class SongSelectDisplay extends MyScreenAdapter {
 	private static final String LOG_TAG = SongSelectDisplay.class.getSimpleName();
 	SpriteBatch batch;
@@ -20,22 +20,20 @@ public class SongSelectDisplay extends MyScreenAdapter {
     Texture img2;
     Texture img3;
     Texture img4;
-    BitmapFont font;
-    ShapeRenderer renderer;
+    ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
 	private Viewport viewport;
 
 	public SongSelectDisplay(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
-        img1 = new Texture("res/hidari.png");
-        img2 = new Texture("res/mae.png");
-        img3 = new Texture("res/migi.png");
-        img4 = new Texture("res/usiro.png");
-        font = new BitmapFont();
-        renderer = new ShapeRenderer();
-	}
+        img1 = new Texture("res/startbutton4.png");
+        img2 = new Texture("res/startbutton4.png");
+        img3 = new Texture("res/startbutton4.png");
+        img4 = new Texture("res/startbutton4.png");
+        debugRenderer = new ShapeRenderer();
 
+	}
     @Override
     public void resize(int width, int height) {
 		viewport.update(width, height);
@@ -53,31 +51,22 @@ public class SongSelectDisplay extends MyScreenAdapter {
     @Override
     public void render (float delta) {
     	Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    	this.cam.update();
+    	batch.setProjectionMatrix(cam.combined);
         batch.begin();
-        batch.draw(img1, 50, 80);
-        batch.draw(img2, 50, 280);
-        batch.draw(img3, 450, 80);
-        batch.draw(img4, 450, 280);
-
-        font.getData().setScale(1f);
-        font.draw(batch, "kyokumei", 130, 110);
-        font.draw(batch, "kyokumei", 130, 310);
-        font.draw(batch, "kyokumei", 530, 110);
-        font.draw(batch, "kyokumei", 530, 310);
+        batch.draw(img1, 40, 450);
+        batch.draw(img2, 40, 320);
+        batch.draw(img3, 40, 190);
+        batch.draw(img4, 40, 60);
         batch.end();
-        renderer.begin(ShapeRenderer.ShapeType.Line);
-        renderer.rect(120, 90, 270,30);
-        renderer.rect(120, 290, 270,30);
-        renderer.rect(520, 90, 270,30);
-        renderer.rect(520, 290, 270,30);
-        renderer.end();
+        debugRenderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
-			if(120<touchPoint.x && touchPoint.x<390){
-				if(90>touchPoint.y && 60<touchPoint.y){
+			if(40<touchPoint.x && touchPoint.x<40+img1.getWidth()){
+				if(450<touchPoint.y && touchPoint.y<450+img1.getHeight()){
 					game.setScreen(new DifficultySelectDisplay(game));
 				}
 			}
@@ -99,18 +88,16 @@ public class SongSelectDisplay extends MyScreenAdapter {
 		}
 
     }
-
     @Override
     public void hide() {
-        Gdx.app.log(LOG_TAG, "hide");
+    	Gdx.app.log(LOG_TAG, "hide");
         dispose();
     }
     @Override
     public void dispose() {
     	 Gdx.app.log(LOG_TAG, "hide");
-    	 font.dispose();
     	 batch.dispose();
-    	 renderer.dispose();
+    	 debugRenderer.dispose();
     }
 
 }
