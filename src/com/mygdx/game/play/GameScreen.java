@@ -71,7 +71,7 @@ public class GameScreen extends MyScreenAdapter{
 		    }
 		}
 
-		if(renderer.gameRenderer.getScore().getNoteDisp().end()){
+		if(!music.isPlaying() && state == MusicState.PLAY){
 			game.setScreen(new Result(game));
 		}
 	}

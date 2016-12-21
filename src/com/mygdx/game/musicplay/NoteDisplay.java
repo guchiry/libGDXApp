@@ -8,7 +8,6 @@ public class NoteDisplay {
 
 	private Array<Note> dispNotesList = new Array<Note>();
 	private float elapsedTime = 0;
-	private boolean endFlag = false;
 
 	public NoteDisplay(){
 		noteGenerater = new NoteGenerater();
@@ -17,11 +16,6 @@ public class NoteDisplay {
 	public void update(){
 		for(Note note : dispNotesList){
 			note.movePositionX();
-		}
-
-		//終了処理
-		if(elapsedTime > 70){
-			endFlag = true;
 		}
 	}
 
@@ -63,9 +57,5 @@ public class NoteDisplay {
 
 	public float getElapsedTime() {
 		return elapsedTime;
-	}
-
-	public boolean end(){
-		return endFlag;
 	}
 }
