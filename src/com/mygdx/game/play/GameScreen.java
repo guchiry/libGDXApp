@@ -24,6 +24,7 @@ public class GameScreen extends MyScreenAdapter{
 	private float startMusicTime = 0;
 
 	private DisplayRenderer renderer;
+
 	public GameScreen(LibGdxsample game) {
 		super(game);
 	}
@@ -88,6 +89,8 @@ public class GameScreen extends MyScreenAdapter{
 	@Override
 	public void dispose() {
 		renderer.gameRenderer.dispose();
+		music.dispose();
+
 	}
 
 	@Override
