@@ -17,14 +17,13 @@ import com.mygdx.game.screen.Result;
 
 public class GameScreen extends MyScreenAdapter{
 	enum MusicState{
-		PLAY, START, BEFORE_THE_START
+		PLAY, BEFORE_THE_START
 	}
 	private OrthographicCamera cam;
 	private Viewport viewport;
 
 	private Music music;
 	private MusicState state = MusicState.BEFORE_THE_START;
-	private float startMusicTime = 0;
 
 	private DisplayRenderer renderer;
 	private Score score;
@@ -47,12 +46,11 @@ public class GameScreen extends MyScreenAdapter{
 
 	@Override
 	public void render(float delta) {
-		if(state == MusicState.BEFORE_THE_START)
-			startMusicTime += delta;
-		if(startMusicTime > 3f && state == MusicState.BEFORE_THE_START)
-			state = MusicState.START;
-		if(state == MusicState.START){
+		GradeNum.playTime += delta;
+
+		if(GradeNum.playTime > Setting.BEFORE_PLAY_TIME && state != MusicState.PLAY){
 			state = MusicState.PLAY;
+			GradeNum.playTime = 0;
 			music.setLooping(false);
 	        music.setVolume(0.8f);
 	        music.play();

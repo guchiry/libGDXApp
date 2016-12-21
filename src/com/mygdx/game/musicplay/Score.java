@@ -34,9 +34,6 @@ public class Score {
 
 		noteDisp.createNote(delta);
 
-		//エフェクトの追加　UIの調整　各種スクリーンとの連結部分
-
-		// スコアの状態の更新
 		if(!noteDisp.isEmpty()){
 			noteDisp.update();
 			if(noteDisp.getLatestNote().getPosition().x <= 132){
@@ -53,7 +50,7 @@ public class Score {
 			gameOverFlag  = true;
 		}
 
-		if(noteDisp.getElapsedTime() >= 70){
+		if(GradeNum.playTime >= 70){
 			endFlag  = true;
 		}
 	}
