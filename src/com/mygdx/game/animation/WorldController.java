@@ -53,9 +53,20 @@ public class WorldController {
 		feelingControll(16,19,FeelType.B,1);//敵
 		feelingControll(17,19,FeelType.B,0);//〇
 		jumpControll(17,0);
-		moveControll(21,25,Direction.RIGHT,0);
-		moveControll(21,25,Direction.RIGHT,1);
-		fadeInControll(23,25,delta,1);
+		moveControll(20,24,Direction.RIGHT,0);
+		moveControll(20,24,Direction.RIGHT,1);
+		fadeInControll(23,25,delta,3);
+
+		if(time >= 25 && 27 > time){
+			world.getDispHeroList().removeRange(0, 1);
+			world.getDispHeroList().add(new KaedeGame(new Vector2(360, 70)));
+			world.getDispHeroList().add(new ShinonGame(new Vector2(360, 230)));
+//			world.getDispHeroList().add(new Goblin(new Vector2(360, 150)));
+		}
+		rotateControll(25,27,Direction.BACK,0);
+		fadeOutControll(25,27,delta,4);
+		tackleControll(27,Direction.BACK,0);
+		tackleControll(28,Direction.FRONT,1);
 
 //		tackleControll(13,Direction.RIGHT,1);
 //		System.out.println(time);
