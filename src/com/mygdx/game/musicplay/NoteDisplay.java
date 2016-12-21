@@ -17,11 +17,6 @@ public class NoteDisplay {
 		for(Note note : dispNotesList){
 			note.movePositionX();
 		}
-
-		//終了処理
-		if(noteGenerater.isEmpty() && dispNotesList.size == 0){
-			//なんもなす
-		}
 	}
 
 	public void createNote(float delta){

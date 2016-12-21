@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
+import com.mygdx.game.play.GameScreen;
 
 public class DifficultySelectDisplay extends MyScreenAdapter {
 	private static final String LOG_TAG = DifficultySelectDisplay.class.getSimpleName();
@@ -97,15 +98,18 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
 			}
 			if(360<touchPoint.x && touchPoint.x<435){
 				if(240>touchPoint.y && 210<touchPoint.y){
-					game.setScreen(new Result(game));
+					game.setScreen(new GameScreen(game));
 				}
 			}
-			if(340<touchPoint.x && touchPoint.x<440){
-				if(160>touchPoint.y && 115<touchPoint.y){
+			if(340<touchPoint.x && touchPoint.x<460){
+				if(180>touchPoint.y && 150<touchPoint.y){
+					game.setScreen(new GameScreen(game));
 				}
 			}
-			if(350<touchPoint.x && touchPoint.x<420){
-				if(110>touchPoint.y && 65<touchPoint.y){
+			if(360<touchPoint.x && touchPoint.x<440){
+				if(125>touchPoint.y && 95<touchPoint.y){
+					game.setScreen(new GameScreen(game));
+						
 				}
 			}
 		}

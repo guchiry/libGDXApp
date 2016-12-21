@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -21,6 +22,15 @@ public class SongSelectDisplay extends MyScreenAdapter {
     Texture img3;
     Texture img4;
     Texture img5;
+    Texture img6;
+    Texture img7;
+    Texture img8;
+    Texture img9;
+    
+    TextureRegion[] front1;
+    TextureRegion[] front2;
+    TextureRegion[] front3;
+    TextureRegion[] front4;
     
     ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
@@ -35,7 +45,15 @@ public class SongSelectDisplay extends MyScreenAdapter {
         img3 = new Texture("res/preciousperson.png");
         img4 = new Texture("res/secretthings.png");
         img5 = new Texture("res/dailyworks1.png");
+        img6 = new Texture("res/kaede2.png");
+        img7 = new Texture("res/sinon2.png");
+        img8 = new Texture("res/visyunu2.png");
+        img9 = new Texture("res/rusifa.png");
         debugRenderer = new ShapeRenderer();
+        front1 = new TextureRegion(img6).split(16, 16)[0];
+        front2 = new TextureRegion(img7).split(16, 16)[0];
+        front3 = new TextureRegion(img8).split(16, 16)[0];
+        front4 = new TextureRegion(img9).split(16, 16)[0];
 
 	}
     @Override
@@ -65,6 +83,10 @@ public class SongSelectDisplay extends MyScreenAdapter {
         batch.draw(img3, 320, 310);
         batch.draw(img4, 320, 190);
         batch.draw(img5, 335, 70);
+        batch.draw(front1[1], 135, 390, 64, 64);
+        batch.draw(front2[1], 135, 270, 64, 64);
+        batch.draw(front3[1], 135, 150, 64, 64);
+        batch.draw(front4[1], 135, 30, 64, 64);
         batch.end();
         debugRenderer.end();
         if (Gdx.input.justTouched()) {

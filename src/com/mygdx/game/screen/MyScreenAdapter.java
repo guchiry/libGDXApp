@@ -6,7 +6,7 @@ import com.mygdx.game.LibGdxsample;
 
 public abstract class MyScreenAdapter implements Screen {
     private static final String LOG_TAG = MyScreenAdapter.class.getSimpleName();
-    LibGdxsample game;
+    public LibGdxsample game;
 
     public MyScreenAdapter (LibGdxsample game) {
         this.game = game;
