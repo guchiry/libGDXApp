@@ -84,9 +84,9 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
         batch.draw(front2[1], 320, 300, 64, 64);
         batch.draw(front3[1], 420, 300, 64, 64);
         batch.draw(img4, 520, 300, 64, 64);
-        batch.draw(img5, 300, 210);
-        batch.draw(img6, 300, 150);
-        batch.draw(img7, 300, 90);
+        batch.draw(img5, 335, 210);
+        batch.draw(img6, 335, 150);
+        batch.draw(img7, 335, 90);
         font.draw(batch, "back", 35, 565);
         batch.end();
         renderer.begin(ShapeRenderer.ShapeType.Line);
@@ -105,16 +105,16 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
 					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
-				if(210>touchPoint.y && 165<touchPoint.y){
+			if(360<touchPoint.x && touchPoint.x<435){
+				if(200>touchPoint.y && 170<touchPoint.y){
 					game.setScreen(new Result(game));
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
+			if(340<touchPoint.x && touchPoint.x<440){
 				if(160>touchPoint.y && 115<touchPoint.y){
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
+			if(350<touchPoint.x && touchPoint.x<420){
 				if(110>touchPoint.y && 65<touchPoint.y){
 				}
 			}

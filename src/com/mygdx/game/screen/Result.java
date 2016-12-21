@@ -82,25 +82,26 @@ public class Result extends MyScreenAdapter {
         if(i>250){
         	batch.draw(img8, 500, 100);
         	batch.draw(img9, 650, 100);
+        	if (Gdx.input.justTouched()) {
+            	float x = Gdx.input.getX();
+    		    float y = Gdx.input.getY();
+    		    Vector3 touchPoint = new Vector3();
+    		    viewport.unproject(touchPoint.set(x, y, 0));
+    		    if(525<touchPoint.x && touchPoint.x<600){
+    				if(110>touchPoint.y && 85<touchPoint.y){
+    					game.setScreen(new Title(game));
+    				}
+    			}
+    		    if(680<touchPoint.x && touchPoint.x<750){
+    				if(110>touchPoint.y && 85<touchPoint.y){
+    					Gdx.app.exit();
+    					}
+    			}
+            }
         }
         
         batch.end(); // 描画の終了
-        if (Gdx.input.justTouched()) {
-        	float x = Gdx.input.getX();
-		    float y = Gdx.input.getY();
-		    Vector3 touchPoint = new Vector3();
-		    viewport.unproject(touchPoint.set(x, y, 0));
-		    if(400<touchPoint.x && touchPoint.x<550){
-				if(380>touchPoint.y && 340<touchPoint.y){
-					game.setScreen(new Title(game));
-				}
-			}
-		    if(600<touchPoint.x && touchPoint.x<750){
-				if(380>touchPoint.y && 340<touchPoint.y){
-					Gdx.app.exit();
-					}
-			}
-        }
+        
     }
     @Override
     public void hide() {
