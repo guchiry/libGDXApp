@@ -69,13 +69,13 @@ public class Title extends MyScreenAdapter {
 		    float y = Gdx.input.getY();
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
-			if(300<touchPoint.x && touchPoint.x<500){
-				if(160>touchPoint.y && 115<touchPoint.y){
+			if(345<touchPoint.x && touchPoint.x<435){
+				if(150>touchPoint.y && 120<touchPoint.y){
 					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
-			if(300<touchPoint.x && touchPoint.x<500){
-				if(110>touchPoint.y && 65<touchPoint.y){
+			if(360<touchPoint.x && touchPoint.x<430){
+				if(110>touchPoint.y && 83<touchPoint.y){
 					Gdx.app.exit();
 					
 				}
