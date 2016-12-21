@@ -12,44 +12,41 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
+import com.mygdx.game.Sequence;
+import com.mygdx.game.musicplay.GradeNum;
 import com.mygdx.game.musicplay.Setting;
 
 
 public class Result extends MyScreenAdapter {
 	private static final String LOG_TAG = Result.class.getSimpleName();
     SpriteBatch batch;
-    Texture img1;
-    Texture img2;
-    Texture img3;
-    Texture img4;
-    Texture img5;
-    Texture img6;
-    Texture img7;
-    Texture img8;
-    Texture img9;
-    Texture img10;
+    Texture perfectImg, greatImg, goodImg, missImg, totalImg, songSelectImg, gameOverImg, titleImg, exitImg, hearttalesImg;
+
     BitmapFont font;
     ShapeRenderer debugRenderer;
 	int i;
 	private OrthographicCamera cam;
 	private Viewport viewport;
 
+	Sequence seq = new Sequence();
+
     public Result(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
         font = new BitmapFont();
         debugRenderer = new ShapeRenderer();
-        img1 = new Texture("res/perfect.png");
-        img2 = new Texture("res/great1.png");
-        img3 = new Texture("res/good2.png");
-        img4 = new Texture("res/miss1.png");
-        img5 = new Texture("res/totalpoint.png");
-        img6 = new Texture("res/songselect.png");
-        img7 = new Texture("res/gameover.png");
-        img8 = new Texture("res/title.png");
-        img9 = new Texture("res/exit.png");
-        img10 = new Texture("res/hearttales.png");
-		}
+        perfectImg= new Texture("res/perfect.png");
+        greatImg = new Texture("res/great1.png");
+        goodImg = new Texture("res/good2.png");
+        missImg = new Texture("res/miss1.png");
+        totalImg = new Texture("res/totalpoint.png");
+        songSelectImg = new Texture("res/songselect.png");
+        gameOverImg = new Texture("res/gameover.png");
+        titleImg = new Texture("res/title.png");
+        exitImg = new Texture("res/exit.png");
+        hearttalesImg = new Texture("res/hearttales.png");
+	}
+
     @Override
     public void resize(int width, int height) {
 		viewport.update(width, height);
@@ -72,20 +69,28 @@ public class Result extends MyScreenAdapter {
         this.cam.update();
     	batch.setProjectionMatrix(cam.combined);
         batch.begin(); // 描画の開始
-        batch.draw(img1, 30, 280);
-        batch.draw(img2, 30, 230);
-        batch.draw(img3, 30, 180);
-        batch.draw(img4, 30, 130);
-        batch.draw(img5, 300, 130);
-        batch.draw(img6, 10, 340);
-        batch.draw(img10, 310, 415);
+        batch.draw(perfectImg, 30, 280);
+        seq.draw(batch,178, 290, GradeNum.perfect);
+        seq.draw(batch, 230, 290, GradeNum.fullCombo);
+        batch.draw(greatImg, 30, 230);
+        seq.draw(batch,178, 240, GradeNum.great);
+        seq.draw(batch, 230, 240, GradeNum.fullCombo);
+        batch.draw(goodImg, 30, 180);
+        seq.draw(batch,178, 190, GradeNum.good);
+        seq.draw(batch, 230, 190, GradeNum.fullCombo);
+        batch.draw(missImg, 30, 130);
+        seq.draw(batch,178, 140, GradeNum.miss);
+        seq.draw(batch, 230, 140, GradeNum.fullCombo);
+        batch.draw(totalImg, 300, 130);
+        batch.draw(songSelectImg, 10, 340);
+        batch.draw(hearttalesImg, 310, 415);
         if(i>200){
-        	batch.draw(img7, 650, 130);
+        	batch.draw(gameOverImg, 650, 130);
         }
 
         if(i>250){
-        	batch.draw(img8, 500, 30);
-        	batch.draw(img9, 650, 30);
+        	batch.draw(titleImg, 500, 30);
+        	batch.draw(exitImg, 650, 30);
         	if (Gdx.input.justTouched()) {
             	float x = Gdx.input.getX();
     		    float y = Gdx.input.getY();
@@ -105,7 +110,7 @@ public class Result extends MyScreenAdapter {
         }
 
         batch.end(); // 描画の終了
-        
+
     }
     @Override
     public void hide() {

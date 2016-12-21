@@ -4,20 +4,15 @@ import com.badlogic.gdx.utils.Array;
 
 public class NoteGenerater {
 	private Array<Float> score = new Array<Float>();
-	private int noteNum;
 
 	public NoteGenerater(){
 		ScoreHolder scoreHolder = new ScoreHolder(0);
 		score = scoreHolder.getScore();
-		noteNum = score.size;
+		GradeNum.fullCombo = score.size;
 	}
 
 	public Array<Float> getScore(){
 		return score;
-	}
-
-	public int getNoteNum(){
-		return noteNum;
 	}
 
 	public Float getLateNote(){
