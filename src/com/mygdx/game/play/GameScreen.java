@@ -37,7 +37,7 @@ public class GameScreen extends MyScreenAdapter{
 
 		renderer = new DisplayRenderer(cam);
 
-		music = Gdx.audio.newMusic(Gdx.files.internal("res/FatefulDay.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("res/FatefulDay2.mp3"));
 	}
 
 	@Override
