@@ -48,7 +48,7 @@ public class Result extends MyScreenAdapter {
         img7 = new Texture("res/gameover.png");
         img8 = new Texture("res/title.png");
         img9 = new Texture("res/exit.png");
-        img10 = new Texture("res/fatefulday.png");
+        img10 = new Texture("res/hearttales.png");
 		}
     @Override
     public void resize(int width, int height) {
