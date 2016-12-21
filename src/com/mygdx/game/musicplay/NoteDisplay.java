@@ -19,9 +19,8 @@ public class NoteDisplay {
 	}
 
 	public void createNote(float delta){
-		System.out.println(Setting.ARRIVAL_TIME);
 		if(!noteGenerater.isEmpty()){
-			if(GradeNum.playTime >= noteGenerater.getLateNote()-Setting.ARRIVAL_TIME){
+			if(GradeNum.playTime+Setting.ARRIVAL_TIME >= noteGenerater.getLateNote()){
 				noteGenerater.removeNote(0);
 				addNote(new Vector2(740, 392));
 			}

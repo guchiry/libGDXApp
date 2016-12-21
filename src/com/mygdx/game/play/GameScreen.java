@@ -50,11 +50,11 @@ public class GameScreen extends MyScreenAdapter{
 
 		if(GradeNum.playTime > Setting.BEFORE_PLAY_TIME && state != MusicState.PLAY){
 			state = MusicState.PLAY;
-			GradeNum.playTime = 0;
 			music.setLooping(false);
 	        music.setVolume(0.8f);
 	        music.play();
 		}
+
 		Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		renderer.render(delta);
