@@ -14,4 +14,6 @@ public class GradeNum {
 	public static int score;
 
 	public static int fullCombo;
+
+	public static float playTime = 0;
 }

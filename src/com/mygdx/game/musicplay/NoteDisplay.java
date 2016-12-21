@@ -7,7 +7,6 @@ public class NoteDisplay {
 	private NoteGenerater noteGenerater;
 
 	private Array<Note> dispNotesList = new Array<Note>();
-	private float elapsedTime = 0;
 
 	public NoteDisplay(){
 		noteGenerater = new NoteGenerater();
@@ -20,9 +19,8 @@ public class NoteDisplay {
 	}
 
 	public void createNote(float delta){
-		elapsedTime += delta;
 		if(!noteGenerater.isEmpty()){
-			if(elapsedTime >= noteGenerater.getLateNote()-4.1f){
+			if(GradeNum.playTime >= noteGenerater.getLateNote()){
 				noteGenerater.removeNote(0);
 				addNote(new Vector2(740, 392));
 			}
@@ -53,9 +51,5 @@ public class NoteDisplay {
 		}else{
 			return false;
 		}
-	}
-
-	public float getElapsedTime() {
-		return elapsedTime;
 	}
 }

@@ -14,4 +14,6 @@ public class Setting {
 	public static final float GOOD_DISTANCE = SUCCESS_DISTANCE;
 	public static final float GREAT_DISTANCE = 10f;
 	public static final float PERFECT_DISTANCE = 5f;
+
+	public static final float BEFORE_PLAY_TIME = 3f;
 }

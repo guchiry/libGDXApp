@@ -19,7 +19,7 @@ public class Controller {
 
 		if(touchFlag){
 			touchFlag = false;
-			System.out.print(score.getNoteDisp().getElapsedTime() + "f,");
+			System.out.print(GradeNum.playTime + "f,");
 			score.sound.play();
 			score.getDecision().evaluate();
 			if(score.getDecision().getGrade() == GradeDecision.Grade.MISS){
