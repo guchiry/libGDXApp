@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
 import com.mygdx.game.screen.MyScreenAdapter;
+import com.mygdx.game.screen.Result;
 
 public class GameScreen extends MyScreenAdapter{
 	enum MusicState{
@@ -68,6 +69,10 @@ public class GameScreen extends MyScreenAdapter{
 		        pause();
 		        System.out.println("PauseButtooooooooon!!!");
 		    }
+		}
+
+		if(renderer.gameRenderer.getScore().getNoteDisp().end()){
+			game.setScreen(new Result(game));
 		}
 	}
 

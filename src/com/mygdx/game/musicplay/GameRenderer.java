@@ -71,21 +71,17 @@ public class GameRenderer {
 
 		batch.draw(anim.getKeyFrame(time, true), 16, 360, 48, 48);
 
-
-
-
-
 		seq.draw(batch, 420, 444,score.getDecision().getComboNum());
-
-
-
-
 		batch.end();
 	}
 
 	public void render(float delta){
 		update(delta);
 		draw(delta);
+	}
+
+	public Score getScore(){
+		return score;
 	}
 
 	public void dispose(){
