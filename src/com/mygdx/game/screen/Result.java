@@ -70,10 +70,17 @@ public class Result extends MyScreenAdapter {
     	batch.setProjectionMatrix(cam.combined);
         batch.begin(); // 描画の開始
         batch.draw(perfectImg, 30, 280);
-        seq.draw(batch,220, 290, GradeNum.perfect);
+        seq.draw(batch,178, 290, GradeNum.perfect);
+        seq.draw(batch, 230, 290, GradeNum.fullCombo);
         batch.draw(greatImg, 30, 230);
+        seq.draw(batch,178, 240, GradeNum.great);
+        seq.draw(batch, 230, 240, GradeNum.fullCombo);
         batch.draw(goodImg, 30, 180);
+        seq.draw(batch,178, 190, GradeNum.good);
+        seq.draw(batch, 230, 190, GradeNum.fullCombo);
         batch.draw(missImg, 30, 130);
+        seq.draw(batch,178, 140, GradeNum.miss);
+        seq.draw(batch, 230, 140, GradeNum.fullCombo);
         batch.draw(totalImg, 300, 130);
         batch.draw(songSelectImg, 10, 340);
         batch.draw(hearttalesImg, 310, 415);
