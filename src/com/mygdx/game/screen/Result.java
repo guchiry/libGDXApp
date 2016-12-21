@@ -43,7 +43,7 @@ public class Result extends MyScreenAdapter {
         img3 = new Texture("res/good2.png");
         img4 = new Texture("res/miss1.png");
         img5 = new Texture("res/totalpoint.png");
-        img6 = new Texture("res/startbutton4.png");
+        img6 = new Texture("res/songselect.png");
         img7 = new Texture("res/gameover.png");
         img8 = new Texture("res/title.png");
         img9 = new Texture("res/exit.png");

@@ -30,10 +30,10 @@ public class SongSelectDisplay extends MyScreenAdapter {
 	public SongSelectDisplay(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
-        img1 = new Texture("res/startbutton4.png");
-        img2 = new Texture("res/startbutton4.png");
-        img3 = new Texture("res/startbutton4.png");
-        img4 = new Texture("res/startbutton4.png");
+        img1 = new Texture("res/songselect.png");
+        img2 = new Texture("res/songselect.png");
+        img3 = new Texture("res/songselect.png");
+        img4 = new Texture("res/songselect.png");
         font = new BitmapFont();
         debugRenderer = new ShapeRenderer();
     
