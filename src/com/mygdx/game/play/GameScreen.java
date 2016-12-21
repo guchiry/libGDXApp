@@ -77,7 +77,6 @@ public class GameScreen extends MyScreenAdapter{
 		if(score.endFlag){
 			game.setScreen(new Result(game));
 		}
-
 		if(score.gameOverFlag){
 			music.stop();
 			game.setScreen(new Result(game));
