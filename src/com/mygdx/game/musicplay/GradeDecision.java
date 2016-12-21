@@ -97,4 +97,13 @@ public class GradeDecision {
 	public Grade getGrade() {
 		return grade;
 	}
+
+	public void finalGrade() {
+		GradeNum.perfect = perfectNum;
+		GradeNum.great = greatNum;
+		GradeNum.good = goodNum;
+		GradeNum.miss = missNum;
+		GradeNum.combo = combo;
+		GradeNum.score = scoreNum;
+	}
 }

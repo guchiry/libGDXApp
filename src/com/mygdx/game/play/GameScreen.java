@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
+import com.mygdx.game.musicplay.GradeNum;
 import com.mygdx.game.musicplay.Score;
 import com.mygdx.game.musicplay.Setting;
 import com.mygdx.game.screen.MyScreenAdapter;
@@ -75,11 +76,15 @@ public class GameScreen extends MyScreenAdapter{
 		}
 
 		if(score.endFlag){
+			score.getDecision().finalGrade();
+			GradeNum.state = GradeNum.State.GAME_CLEAR;
 			game.setScreen(new Result(game));
 		}
 
 		if(score.gameOverFlag){
 			music.stop();
+			score.getDecision().finalGrade();
+			GradeNum.state = GradeNum.State.GAME_OVER;
 			game.setScreen(new Result(game));
 		}
 	}
