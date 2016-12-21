@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -12,7 +13,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
 public class Result extends MyScreenAdapter {
@@ -79,7 +79,7 @@ public class Result extends MyScreenAdapter {
         if(i>200){
         	batch.draw(img7, 650, 200);
         }
-        
+
         if(i>250){
         	batch.draw(img8, 500, 100);
         	batch.draw(img9, 650, 100);
@@ -100,7 +100,7 @@ public class Result extends MyScreenAdapter {
     			}
             }
         }
-        
+
         batch.end(); // 描画の終了
         
     }

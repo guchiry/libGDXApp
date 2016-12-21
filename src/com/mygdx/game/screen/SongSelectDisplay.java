@@ -90,7 +90,6 @@ public class SongSelectDisplay extends MyScreenAdapter {
     }
     @Override
     public void hide() {
-        Gdx.app.log(LOG_TAG, "hide");
         dispose();
     }
     @Override
