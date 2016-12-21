@@ -4,7 +4,7 @@ public class Setting {
 	public static final float LOGICAL_WIDTH = 800;
 	public static final float LOGICAL_HEIGHT = 480;
 
-	public static final float NOTES_SPEED = 2.4f;
+	public static final float NOTES_SPEED = 3f;
 
 	public static final float DICISION_FADE_TIME = 0.5f;
 
