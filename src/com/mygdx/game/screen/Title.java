@@ -50,6 +50,8 @@ public class Title extends MyScreenAdapter {
     @Override
     public void render (float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
+        this.cam.update();
+    	batch.setProjectionMatrix(cam.combined);
         if (Gdx.input.isKeyPressed(Input.Keys.ENTER)) {
 			game.setScreen(new GameScreen(game));
         }
@@ -70,12 +72,13 @@ public class Title extends MyScreenAdapter {
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
 			if(345<touchPoint.x && touchPoint.x<435){
-				if(150>touchPoint.y && 120<touchPoint.y){
+				if(185>touchPoint.y && 150<touchPoint.y){
 					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
 			if(360<touchPoint.x && touchPoint.x<430){
-				if(110>touchPoint.y && 83<touchPoint.y){
+				if(140>touchPoint.y && 105<touchPoint.y){
+					System.out.println("aaa");
 					Gdx.app.exit();
 				}
 			}

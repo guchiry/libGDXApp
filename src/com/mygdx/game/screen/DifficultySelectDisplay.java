@@ -24,6 +24,7 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
     Texture img5;
     Texture img6;
     Texture img7;
+    Texture img8;
     TextureRegion[] front1;
     TextureRegion[] front2;
     TextureRegion[] front3;
@@ -42,6 +43,7 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
         img5 = new Texture("res/easy10.png");
         img6 = new Texture("res/normal.png");
         img7 = new Texture("res/hard.png");
+        img8 = new Texture("res/back.png");
         batch = new SpriteBatch();
         font = new BitmapFont();
         renderer = new ShapeRenderer();
@@ -76,13 +78,11 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
         batch.draw(img5, 335, 210);
         batch.draw(img6, 335, 150);
         batch.draw(img7, 335, 90);
-        font.draw(batch, "back", 35, 565);
+        batch.draw(img8, 20, 400);
         batch.end();
 
     	renderer.setProjectionMatrix(cam.combined);
         renderer.begin(ShapeRenderer.ShapeType.Line);
-
-        renderer.rect(10, 540, 80,40);
 
         renderer.end();
         if (Gdx.input.justTouched()) {
@@ -90,14 +90,13 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
 		    float y = Gdx.input.getY();
 		    Vector3 touchPoint = new Vector3();
 		    viewport.unproject(touchPoint.set(x, y, 0));
-		    if(10<touchPoint.x && touchPoint.x<80){
-				if(465>touchPoint.y && 430<touchPoint.y){
-					System.out.println("back");
+		    if(20<touchPoint.x && touchPoint.x<20+img8.getWidth()*0.85){
+				if(400<touchPoint.y && touchPoint.y<400+img8.getHeight()*0.85){
 					game.setScreen(new SongSelectDisplay(game));
 				}
 			}
 			if(360<touchPoint.x && touchPoint.x<435){
-				if(200>touchPoint.y && 170<touchPoint.y){
+				if(240>touchPoint.y && 210<touchPoint.y){
 					game.setScreen(new Result(game));
 				}
 			}
