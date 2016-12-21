@@ -40,6 +40,7 @@ public class Score {
 			if(noteDisp.getLatestNote().getPosition().x <= 132){
 				noteDisp.removeNote(0);
 				decision.increaseMissNum();
+				decision.resetComboNum();
 				playUi.getHpBar().decreaseHp();
 			}
 		}

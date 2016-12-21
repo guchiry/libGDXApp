@@ -41,7 +41,6 @@ public class GradeDecision {
 		if(!score.getNoteDisp().isEmpty()){
 			distance = score.getPlayUI().getCenterX() - score.getNoteDisp().getLatestNote().getPosition().x;
 			if(distance < 0) distance = -distance;
-
 		}
 		return distance;
 	}
