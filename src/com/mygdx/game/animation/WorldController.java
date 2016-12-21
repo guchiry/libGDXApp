@@ -117,7 +117,8 @@ public class WorldController {
 		}
 		rotateControll(63,64,Direction.BACK,0);
 		rotateControll(63,64,Direction.BACK,1);
-		fadeInControll(65,67,delta,10);
+		fadeOutControll(64,65,delta,10);
+		fadeInControll(65,67,delta,11);
 		if(time >= 66 && 67 > time){
 			world.getDispHeroList().clear();
 		}
