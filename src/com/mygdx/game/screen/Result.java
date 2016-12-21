@@ -20,7 +20,7 @@ import com.mygdx.game.musicplay.Setting;
 public class Result extends MyScreenAdapter {
 	private static final String LOG_TAG = Result.class.getSimpleName();
     SpriteBatch batch;
-    Texture perfectImg, greatImg, goodImg, missImg, totalImg, songSelectImg, gameOverImg, titleImg, exitImg, hearttalesImg;
+    Texture perfectImg, greatImg, goodImg, missImg, totalImg, songSelectImg, gameOverImg, titleImg, exitImg, hearttalesImg, gameClearImg;
 
     BitmapFont font;
     ShapeRenderer debugRenderer;
@@ -45,6 +45,7 @@ public class Result extends MyScreenAdapter {
         titleImg = new Texture("res/title.png");
         exitImg = new Texture("res/exit.png");
         hearttalesImg = new Texture("res/hearttales.png");
+        gameClearImg = new Texture("res/gameclear.png");
 	}
 
     @Override
@@ -82,10 +83,14 @@ public class Result extends MyScreenAdapter {
         seq.draw(batch,178, 140, GradeNum.miss);
         seq.draw(batch, 230, 140, GradeNum.fullCombo);
         batch.draw(totalImg, 300, 130);
+        seq.draw(batch, 520, 160, GradeNum.score);
         batch.draw(songSelectImg, 10, 340);
         batch.draw(hearttalesImg, 310, 415);
         if(i>200){
-        	batch.draw(gameOverImg, 650, 130);
+        	if(GradeNum.state == GradeNum.State.GAME_OVER)
+        		batch.draw(gameOverImg, 650, 130);
+        	else batch.draw(gameClearImg, 650, 130);
+
         }
 
         if(i>250){
