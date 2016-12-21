@@ -60,61 +60,62 @@ public class WorldController {
 		fadeInControll(22,24,delta,3);
 		if(time >= 24 && 26 > time){
 			world.getDispHeroList().clear();
+			world.getDispHeroList().add(new Goblin(new Vector2(360, 120)));
 			world.getDispHeroList().add(new KaedeGame(new Vector2(360, 20)));
-			world.getDispHeroList().add(new ShinonGame(new Vector2(360, 240)));
-			world.getDispHeroList().add(new Goblin(new Vector2(360, 150)));
+			world.getDispHeroList().add(new ShinonGame(new Vector2(360, 250)));
 		}
-		rotateControll(24,26,Direction.BACK,0);
+		rotateControll(24,26,Direction.BACK,1);
 		//カエデ、シノン、ゴブリン、ゲーム内戦闘
 		fadeOutControll(24,26,delta,4);
-		tackleControll(27,Direction.BACK,0);
-		tackleControll(28,Direction.FRONT,1);
-		fadeInControll(28,30,delta,5);
-		if(time >= 30 && 32 > time){
+		tackleControll(27,Direction.BACK,1);
+		feelingControll(28,29,FeelType.DAMAGE,0);//-10p
+		tackleControll(29,Direction.FRONT,2);
+		feelingControll(30,31,FeelType.DAMAGE,0);//-10p
+		fadeInControll(32,34,delta,5);
+		if(time >= 34 && 36 > time){
 			world.getDispHeroList().clear();
 			world.getDispHeroList().add(new KaedeGame(new Vector2(310, 150)));
 			world.getDispHeroList().add(new VisnuGame(new Vector2(440, 150)));
 		}
-		rotateControll(30,32,Direction.RIGHT,0);
-		rotateControll(30,32,Direction.LEFT,1);
+		rotateControll(34,36,Direction.RIGHT,0);
+		rotateControll(34,36,Direction.LEFT,1);
 		//カエデ、ヴィシュヌ、ゲーム内
-		fadeOutControll(30,32,delta,6);
-		moveControll(32,33,Direction.LEFT,1);
-		jumpControll(33,1);
-		feelingControll(34,35,FeelType.OK,0);//〇
-		moveControll(35,41,Direction.RIGHT,0);
-		moveControll(35,41,Direction.RIGHT,1);
-		fadeInControll(37,39,delta,7);
-		if(time >= 39 && 41 > time){
+		fadeOutControll(34,36,delta,6);
+		moveControll(36,37,Direction.LEFT,1);
+		jumpControll(37,1);
+		feelingControll(38,39,FeelType.OK,0);//〇
+		moveControll(39,45,Direction.RIGHT,0);
+		moveControll(39,45,Direction.RIGHT,1);
+		fadeInControll(41,43,delta,7);
+		if(time >= 43 && 45 > time){
 			world.getDispHeroList().clear();
 			world.getDispHeroList().add(new KaedeGame(new Vector2(440, 50)));
 			world.getDispHeroList().add(new VisnuGame(new Vector2(310, 50)));
-			world.getDispHeroList().add(new ShinonGame(new Vector2(310, 200)));
+			world.getDispHeroList().add(new ShinonGame(new Vector2(310, 210)));
 		}
 
-		rotateControll(39,41,Direction.BACK,0);
-		rotateControll(39,41,Direction.BACK,1);
+		rotateControll(43,45,Direction.BACK,0);
+		rotateControll(43,45,Direction.BACK,1);
 		//カエデ、ヴィシュヌ、シノン、ゲーム内戦闘
-		fadeOutControll(39,41,delta,8);
-		feelingControll(41,43,FeelType.SURPRISE,0);//驚き
-		feelingControll(41,43,FeelType.SURPRISE,1);//驚き
-		feelingControll(43,45,FeelType.SILENCE,2);//無言
-		tackleControll(45,Direction.FRONT,2);
-		feelingControll(46,47,FeelType.DAMAGE,1);//-10p
-		feelingControll(48,50,FeelType.SURPRISE,0);//驚き
-		feelingControll(48,50,FeelType.SURPRISE,1);//驚き
-		feelingControll(50,52,FeelType.CRY,1);//泣き
-		jumpControll(50,1);
-		feelingControll(52,54,FeelType.SILENCE,2);//無言
-		fadeInControll(55,57,delta,9);
-		if(time >= 56 && 57 > time){
+		fadeOutControll(43,45,delta,8);
+		feelingControll(45,47,FeelType.SURPRISE,0);//驚き
+		feelingControll(45,47,FeelType.SURPRISE,1);//驚き
+		feelingControll(47,49,FeelType.SILENCE,2);//無言
+		tackleControll(49,Direction.FRONT,2);
+		feelingControll(50,51,FeelType.DAMAGE,1);//-10p
+		feelingControll(52,54,FeelType.SURPRISE,0);//驚き
+		feelingControll(52,54,FeelType.SURPRISE,1);//驚き
+		feelingControll(54,56,FeelType.CRY,1);//泣き
+		jumpControll(54,1);
+		feelingControll(56,58,FeelType.SILENCE,2);//無言
+		fadeInControll(59,63,delta,9);
+		if(time >= 62 && 63 > time){
 			world.getDispHeroList().clear();
 			world.getDispHeroList().add(new KaedeGame(new Vector2(440, 50)));
 			world.getDispHeroList().add(new VisnuGame(new Vector2(310, 50)));
 		}
-		rotateControll(56,57,Direction.BACK,0);
-		rotateControll(56,57,Direction.BACK,1);
-
+		rotateControll(62,63,Direction.BACK,0);
+		rotateControll(62,63,Direction.BACK,1);
 	}
 
 	public void fadeInControll(float startTime, float endTime, float delta, int count){
@@ -168,7 +169,7 @@ public class WorldController {
 
 	public void jumpControll(float startTime,int listNumber){
 		if(world.getDispHeroList().size > listNumber ){
-			if(time >= startTime && startTime+0.642 > time){
+			if(time >= startTime && startTime+0.644 > time){
 				Hero hero = world.getDispHeroList().get(listNumber);
 				hero.setState(hero.state.JUMP);
 				world.jump(hero);
