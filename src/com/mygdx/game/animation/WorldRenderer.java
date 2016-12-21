@@ -57,6 +57,7 @@ public class WorldRenderer {
 	public void render(float delta){
 		update(delta);
 		draw();
+		System.out.println(controller.time);
 	}
 
 	public void drawHero(Hero hero){
@@ -68,13 +69,14 @@ public class WorldRenderer {
 		if(hero.getState().equals(Hero.State.WALKING)){
 			heroSprite = hero.currentAnim().getKeyFrame(stateTime,loop);
 		}
-		if(hero.getState().equals(Hero.State.FEELING)){
+		if(hero.getFeelingFlag().equals(Hero.FeelingFlag.ON)){
 			Texture feelingIcon = feeling.getFeelIcon();
 			batch.draw(feelingIcon,x1,y1+64,64,64);
 		}
 		batch.draw(heroSprite,x1,y1,64,64);
 
 		hero.setState(hero.state.IDLE);
+		hero.setFeelingFlag(hero.feelingFlag.OFF);
 	}
 
 }
