@@ -13,19 +13,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.mygdx.game.LibGdxsample;
-import com.mygdx.game.musicplay.Setting;
-
 public class DifficultySelectDisplay extends MyScreenAdapter {
 	private static final String LOG_TAG = DifficultySelectDisplay.class.getSimpleName();
     SpriteBatch batch;
@@ -72,6 +59,8 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
     @Override
     public void render (float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        this.cam.update();
+    	batch.setProjectionMatrix(cam.combined);
         batch.begin();
         batch.draw(img1, 220, 300);
         batch.draw(img2, 320, 300);
@@ -82,8 +71,10 @@ public class DifficultySelectDisplay extends MyScreenAdapter {
         batch.draw(img7, 300, 90);
         font.draw(batch, "back", 35, 565);
         batch.end();
+
+    	renderer.setProjectionMatrix(cam.combined);
         renderer.begin(ShapeRenderer.ShapeType.Line);
-        
+
         renderer.rect(10, 540, 80,40);
 
         renderer.end();
