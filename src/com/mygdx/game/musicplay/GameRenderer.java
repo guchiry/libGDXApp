@@ -66,7 +66,7 @@ public class GameRenderer {
 			}
 		}
 		//文字描画
-		font.draw(batch, "COMB:" + score.getDecision().getComboNum(), 360, 460);
+		font.draw(batch, "COMB:", 350, 460);
 		if(score.getTouchTime() < Setting.DICISION_FADE_TIME) font.draw(batch, score.getDicisionStr(), 5, 440);
 
 		batch.draw(anim.getKeyFrame(time, true), 16, 360, 48, 48);
@@ -75,7 +75,7 @@ public class GameRenderer {
 
 
 
-		seq.draw(batch, 360, 460,score.getDecision().getComboNum());
+		seq.draw(batch, 420, 444,score.getDecision().getComboNum());
 
 
 
