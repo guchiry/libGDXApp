@@ -78,14 +78,12 @@ public class GameScreen extends MyScreenAdapter{
 			GradeNum.state = GradeNum.State.GAME_CLEAR;
 			game.setScreen(new Result(game));
 		}
-
 		if(score.gameOverFlag){
 			music.stop();
 			score.getDecision().finalGrade();
 			GradeNum.state = GradeNum.State.GAME_OVER;
 			game.setScreen(new Result(game));
 		}
-
 	}
 
 	@Override
