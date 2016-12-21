@@ -16,6 +16,8 @@ public class Score {
 
 	//タッチ関係
 	private float touchTime = 0;
+	public boolean gameOverFlag = false;
+	public boolean endFlag = false;
 
 	public Score(OrthographicCamera cam){
 		this.cam = cam;
@@ -48,7 +50,11 @@ public class Score {
 		controller.touched();
 
 		if(playUi.getHpBar().getHp() <= 0){
+			gameOverFlag  = true;
+		}
 
+		if(noteDisp.getElapsedTime() >= 70){
+			endFlag  = true;
 		}
 	}
 

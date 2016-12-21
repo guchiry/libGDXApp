@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
+import com.mygdx.game.musicplay.Score;
 import com.mygdx.game.musicplay.Setting;
 import com.mygdx.game.screen.MyScreenAdapter;
 import com.mygdx.game.screen.Result;
@@ -25,6 +26,7 @@ public class GameScreen extends MyScreenAdapter{
 	private float startMusicTime = 0;
 
 	private DisplayRenderer renderer;
+	private Score score;
 
 	public GameScreen(LibGdxsample game) {
 		super(game);
@@ -37,6 +39,7 @@ public class GameScreen extends MyScreenAdapter{
 		viewport = new FitViewport(Setting.LOGICAL_WIDTH, Setting.LOGICAL_HEIGHT, cam);
 
 		renderer = new DisplayRenderer(cam);
+		score = renderer.gameRenderer.getScore();
 
 		music = Gdx.audio.newMusic(Gdx.files.internal("res/FatefulDay2.mp3"));
 	}
@@ -71,7 +74,12 @@ public class GameScreen extends MyScreenAdapter{
 		    }
 		}
 
-		if(!music.isPlaying() && state == MusicState.PLAY){
+		if(score.endFlag){
+			game.setScreen(new Result(game));
+		}
+
+		if(score.gameOverFlag){
+			music.stop();
 			game.setScreen(new Result(game));
 		}
 	}
