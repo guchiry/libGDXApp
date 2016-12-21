@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector3;
@@ -12,7 +13,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.game.LibGdxsample;
 import com.mygdx.game.musicplay.Setting;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
 public class Result extends MyScreenAdapter {
@@ -32,7 +32,7 @@ public class Result extends MyScreenAdapter {
 	int i;
 	private OrthographicCamera cam;
 	private Viewport viewport;
-	
+
     public Result(LibGdxsample game) {
         super(game);
         batch = new SpriteBatch();
@@ -64,10 +64,11 @@ public class Result extends MyScreenAdapter {
     @Override
     public void render (float delta) {
     	i++;
-    	
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // カラーバッファをクリア
-        
-        debugRenderer.end();
+
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        this.cam.update();
+    	batch.setProjectionMatrix(cam.combined);
         batch.begin(); // 描画の開始
         batch.draw(img1, 30, 350);
         batch.draw(img2, 30, 300);
@@ -78,7 +79,7 @@ public class Result extends MyScreenAdapter {
         if(i>200){
         	batch.draw(img7, 650, 200);
         }
-        
+
         if(i>250){
         	batch.draw(img8, 500, 100);
         	batch.draw(img9, 650, 100);
@@ -99,7 +100,7 @@ public class Result extends MyScreenAdapter {
     			}
             }
         }
-        
+
         batch.end(); // 描画の終了
         
     }
