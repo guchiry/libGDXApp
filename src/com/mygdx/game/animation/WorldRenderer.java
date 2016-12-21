@@ -53,7 +53,6 @@ public class WorldRenderer {
 	public void render(float delta){
 		update(delta);
 		draw();
-    System.out.println(controller.time);
 	}
 
 	public void drawHero(Hero hero){

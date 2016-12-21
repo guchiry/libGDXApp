@@ -50,7 +50,7 @@ public class Score {
 			gameOverFlag  = true;
 		}
 
-		if(GradeNum.playTime >= 66){
+		if(GradeNum.playTime >= 70){
 			endFlag  = true;
 		}
 	}
