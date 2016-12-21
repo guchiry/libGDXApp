@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.mygdx.game.Sequence;
 
 public class GameRenderer {
 	private Score score;
@@ -19,6 +20,8 @@ public class GameRenderer {
 	ShapeRenderer renderer = new ShapeRenderer();
 	Animation anim;
 	float time = 0;
+
+	Sequence seq = new Sequence();
 
 	public GameRenderer(OrthographicCamera cam){
 		this.cam = cam;
@@ -67,6 +70,15 @@ public class GameRenderer {
 		if(score.getTouchTime() < Setting.DICISION_FADE_TIME) font.draw(batch, score.getDicisionStr(), 5, 440);
 
 		batch.draw(anim.getKeyFrame(time, true), 16, 360, 48, 48);
+
+
+
+
+
+		seq.draw(batch, 360, 460,score.getDecision().getComboNum());
+
+
+
 
 		batch.end();
 	}
