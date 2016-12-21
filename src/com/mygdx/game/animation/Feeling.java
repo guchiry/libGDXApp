@@ -29,7 +29,7 @@ public class Feeling {
 		gameYIcon = new Texture(Gdx.files.internal("res/controller.kaede.png"));
 		gameBIcon = new Texture(Gdx.files.internal("res/controller.sinon.png"));
 		exclamateIcon = new Texture(Gdx.files.internal("res/onpu.png"));
-		enemyIcon = new Texture(Gdx.files.internal("res/visyunu.png"));
+		enemyIcon = new Texture(Gdx.files.internal("res/EnemyIcon.png"));
 		okIcon = new Texture(Gdx.files.internal("res/maru.png"));
 		surpriseIcon = new Texture(Gdx.files.internal("res/odoroki.png"));
 		silenceIcon = new Texture(Gdx.files.internal("res/mugon.png"));
