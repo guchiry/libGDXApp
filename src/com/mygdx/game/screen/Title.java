@@ -20,6 +20,7 @@ public class Title extends MyScreenAdapter {
     SpriteBatch batch;
     Texture img1;
     Texture img2;
+    Texture img3;
     BitmapFont font;
     ShapeRenderer debugRenderer;
     private OrthographicCamera cam;
@@ -32,6 +33,7 @@ public class Title extends MyScreenAdapter {
         debugRenderer = new ShapeRenderer();
         img1 = new Texture("res/start.png");
         img2 = new Texture("res/exit.png");
+        img3 = new Texture("res/titlename.png");
 		}
     @Override
     public void resize(int width, int height) {
@@ -57,15 +59,12 @@ public class Title extends MyScreenAdapter {
         }
         batch.begin(); // 描画の開始
         font.getData().setScale(3f);
-        font.draw(batch, "kimiyasu", 280, 410);
+        //font.draw(batch, "kimiyasu", 280, 410);
         batch.draw(img1, 330, 150);
         batch.draw(img2, 330, 100);
+        batch.draw(img3, 50, 100);
         font.getData().setScale(1f);
         batch.end(); // 描画の終了
-        debugRenderer.begin(ShapeRenderer.ShapeType.Line);
-        debugRenderer.rect(150, 350, 500,100);
-
-        debugRenderer.end();
         if (Gdx.input.justTouched()) {
         	float x = Gdx.input.getX();
 		    float y = Gdx.input.getY();
