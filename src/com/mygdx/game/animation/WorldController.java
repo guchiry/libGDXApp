@@ -1,9 +1,8 @@
 package com.mygdx.game.animation;
 
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.animation.Hero.FeelType;
 import com.mygdx.game.animation.Hero.Direction;
+import com.mygdx.game.animation.Hero.FeelType;
 
 public class WorldController {
 	private World world;
@@ -14,6 +13,9 @@ public class WorldController {
 	private int fadeCount = 0;
 	private boolean fadeInOn = false;
 	private boolean fadeOutOn = false;
+
+	KaedeGame kaede = new KaedeGame(new Vector2(310, 150));
+	ShinonGame shinon = new ShinonGame(new Vector2(400, 150));
 
 //	private Vector2 position = new Vector2();
 //	private Hero hero(Vector2);
@@ -45,8 +47,8 @@ public class WorldController {
 		fadeInControll(11,13,delta,1);
 		if(time >= 13 && 15 > time){
 			world.getDispHeroList().clear();
-			world.getDispHeroList().add(new KaedeGame(new Vector2(310, 150)));
-			world.getDispHeroList().add(new ShinonGame(new Vector2(400, 150)));
+			world.getDispHeroList().add(kaede);
+			world.getDispHeroList().add(shinon);
 		}
 		//カエデ、シノン、ゲーム内
 		fadeOutControll(13,15,delta,2);
